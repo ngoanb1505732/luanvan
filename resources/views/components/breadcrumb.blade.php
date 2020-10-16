@@ -18,13 +18,13 @@
         <div class="cat__top-bar__item">
             <div class="dropdown cat__top-bar__avatar-dropdown">
                 <?php
-                    if(isset(Auth::user()->user_id) && isset(Auth::user()->profile_image) && !empty(Auth::user()->profile_image))
+                    if(isset(Auth::user()->id) && isset(Auth::user()->profile_photo_path) && !empty(Auth::user()->profile_photo_path))
                     {
                         $profileimage=Auth::user();
                    ?>
                     <a href="javascript: void(0);" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                         <span class="cat__top-bar__avatar" href="javascript:void(0);">
-                            <img src="<?php echo asset("/upload/profileimage/$profileimage->profile_image") ?>" />
+                            <img src="<?php echo asset("/upload/profileimage/$profileimage->profile_photo_path") ?>" />
                         </span>
                     </a>
                    <?php }else{ ?>

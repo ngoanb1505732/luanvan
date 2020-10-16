@@ -8,18 +8,18 @@
 <div class="row">
     <div class="col-xl-4"  style="background-color:#fff; margin-bottom:21px;">
         <div class="cat__core__widget cat__core__widget__2">
-            <div class="cat__core__widget__2__head" style="background-image: url('{!! asset('/dist/modules/dummy-assets/common/img/photos/5.jpeg') !!}');">
+            <div class="cat__core__widget__2__head" style="background-image: url('{!! asset('/dist/modules/dummy-assets/common/img/photos/background-admin-1.png') !!}');">
             </div>
             <div class="cat__core__widget__2__content">
                 <div class="cat__core__widget__2__left">
                  <?php
-                    if(isset(Auth::user()->user_id) && isset(Auth::user()->profile_image) && !empty(Auth::user()->profile_image))
+                    if(isset(Auth::user()->id) && isset(Auth::user()->profile_photo_path) && !empty(Auth::user()->profile_photo_path))
                     {
                         $profileimage=Auth::user();
-                   ?>   
+                   ?>
                    <a class="cat__core__avatar cat__core__avatar--90 cat__core__avatar--border-white" href="javascript:void(0);">
-                     <img src="<?php echo asset("/upload/profileimage/$profileimage->profile_image") ?>" alt="">
-                    </a>      
+                     <img src="<?php echo asset("/upload/profileimage/$profileimage->profile_photo_path") ?>" alt="">
+                    </a>
                    <?php }else{ ?>
                          <a class="cat__core__avatar cat__core__avatar--90 cat__core__avatar--border-white" href="javascript:void(0);">
                             <img src="{!! asset('/upload/profileimage/user_profile.jpg') !!}" alt="Alternative text to the image">
