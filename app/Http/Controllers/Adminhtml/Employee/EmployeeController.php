@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Adminhtml\Employee;
 
 
 use App\Http\Controllers\Controller;
-
+use App\Models\NhanVien;
+use Illuminate\Http\Request;
 class EmployeeController extends Controller
 {
     public function __construct()
@@ -14,17 +15,7 @@ class EmployeeController extends Controller
     }
 
     public function index() {
-        $employees = array();
-        for($i=0;$i<30;$i++){
-            $employee=array(
-                "id"=>$i+1,
-                "ho_ten"=>"Nhân Viên ".($i+1),
-                "ngay_sinh"=>"1/1/1997",
-                "dia_chi"=>"Vinh Long",
-
-            );
-            array_push($employees,$employee);
-        }
+        $employees = NhanVien::all();
         return view('/adminhtml/employee/index',  compact(["employees"]));
     }
 
@@ -34,7 +25,37 @@ class EmployeeController extends Controller
 
     }
 
-public function save(){
+public function save(Request $request){
+    try{
+    $nhanvien = new NhanVien();
+    $nhanvien->ho_ten = $request->ho_ten;
+    $nhanvien->sdt = $request->sdt;
+    $nhanvien->dia_chi = $request->dia_chi;
+    $nhanvien->username = $request->username;
+    $nhanvien->password = $request->password;
+    $nhanvien->ngay_sinh = $request->ngay_sinh;
+    $nhanvien->save();
+    return redirect()->route('employee')->with('success', 'Thêm nhân viên thành công!');;    
+    }
+    catch(Exception $e){
+        return redirect()->route('employee')->with('error', 'Thêm nhân viên thất bại!');;    
 
+    }
+}
+
+public function delete($id) {
+try{
+    $nhanvien = \App\Models\NhanVien::findOrFail((int)$id);
+    $nhanvien->delete();
+    return redirect()->route('employee')->with('success', 'Xóa nhân viên thành công!');   
+}
+catch(Exception $e){
+    return redirect()->route('employee')->with('error', 'Xóa nhân viên thất bại!');   
+
+}
+
+// $nhanvien = NhanVien()::find((int)$id);
+// print_r($nhanvien);
+    
 }
 }

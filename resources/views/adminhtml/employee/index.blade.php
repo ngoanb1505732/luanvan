@@ -57,9 +57,9 @@
             <tbody>
             @foreach($employees as $employee)
                 <tr>
-                    <th>{{$employee["id"]}}</th>
+                    <th>{{$employee["nhan_vien_id"]}}</th>
                     <th>{{$employee["ho_ten"]}}</th>
-                    <th></th>
+                    <th>{{$employee["anh"]}}</th>
                     <th>{{$employee["ngay_sinh"]}}</th>
                     <th>{{$employee["dia_chi"]}}</th>
                     <th>
@@ -69,7 +69,7 @@
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="" role="menu">
                                 <a class="dropdown-item" href=""> &nbsp; <i class="fa fa-pencil" aria-hidden="true"></i> &nbsp;  Sửa</a>
-                                <a class="dropdown-item" href=""> &nbsp; <i class="fa fa-trash" aria-hidden="true"></i> &nbsp; Xoá</a>
+                                <a class="dropdown-item" onclick="return confirm('Bạn chắc chắn muốn xóa');" href="<?php echo route("employee.delete",$employee["nhan_vien_id"]); ?>"> &nbsp; <i class="fa fa-trash" aria-hidden="true"></i> &nbsp; Xoá</a>
                             </ul>
                         </div>
                     </th>

@@ -29,30 +29,39 @@
                 @endif
                 <div class="col-lg-12">
                     {!! Form::open(array('route' => 'employee.save','method'=>'POST', 'id'=>'form-validation', 'name'=>'form-validation', 'enctype'=>'multipart/form-data')) !!}
+                    
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <label class="form-control-label">Username</label>
+                            <input class="form-control"  placeholder="Điền username"   name="username"  type="text" require>
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="form-control-label">Password</label>
+                            <input class="form-control"  placeholder="Điền password"   name="password"  type="password" >
+                        </div>
+                    </div>
+                    
                     <div class="row">
                         <div class="col-lg-6">
                             <label class="form-control-label">Họ và tên</label>
-                            <input class="form-control"  placeholder="Điền họ tên"   name="ho_ten"  type="text" >
+                            <input class="form-control"  placeholder="Điền họ tên"   name="ho_ten"  type="text" require>
                         </div>
                         <div class="col-lg-6">
                             <label class="form-control-label">Địa chỉ</label>
                             <input class="form-control"  placeholder="Điền địa chỉ"   name="dia_chi"  type="text" >
                         </div>
                     </div>
-
+                    
                     <div class="row">
                         <div class="col-lg-6">
                             <label class="form-control-label">Ngày sinh</label>
-                            <input class="form-control"  placeholder="điền ngày sinh"   name="ngay_sinh"  type="text" >
+                            <input class="form-control"  placeholder="điền ngày sinh"   name="ngay_sinh"  type="date" >
                         </div>
                         <div class="col-lg-6">
                             <label class="form-control-label">Số điện thoại</label>
-                            <input class="form-control"  placeholder="Điền số điện thoại"   name="dien_thoai"  type="text" >
+                            <input class="form-control"  placeholder="Điền số điện thoại"   name="sdt"  type="text">
                         </div>
                     </div>
-
-
-                    <input type="hidden" name="product_id" value="">
                     <div class="row">
                         <div class="col-lg-6">
                             <div>
