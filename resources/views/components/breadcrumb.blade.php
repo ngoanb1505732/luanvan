@@ -41,7 +41,7 @@
                     <a class="dropdown-item" href="{{ URL ('changepassword')}}"><i class="dropdown-icon icmn-circle-right"></i> Change Password</a>
                     <!--<a class="dropdown-item" href="javascript:void(0)"><i class="dropdown-icon icmn-circle-right"></i> Support Ticket</a>-->
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{{ url('/main/logout')}}"><i class="dropdown-icon icmn-exit"></i> Logout</a>
+                    <a class="dropdown-item" href="{{ route("logout.admin")}}"><i class="dropdown-icon icmn-exit"></i> Logout</a>
                 </ul>
             </div>
         </div>

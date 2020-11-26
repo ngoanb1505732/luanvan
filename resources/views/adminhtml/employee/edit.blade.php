@@ -1,4 +1,4 @@
-@section('title', 'Tạo nhân viên mới')
+@section('title', 'Cập nhật thông tin nhân viên')
 @include('main')
 @include('components/mainmenu')
 @include('components/breadcrumb')
@@ -12,7 +12,7 @@
                 <a href="{{ route("employee")}}" class="btn btn-success "><i class="fa fa-undo"></i>&nbsp; &nbsp; Quay lại&nbsp; &nbsp;</a>
             </div>
             <span class="cat__core__title">
-            <strong>Thêm Nhân Viên Mới</strong>
+            <strong>Cập Nhật Thông Tin Nhân Viên</strong>
         </span>
         </div>
         <div class="card-body">
@@ -28,38 +28,38 @@
                     </div>
                 @endif
                 <div class="col-lg-12">
-                    {!! Form::open(array('route' => 'employee.save','method'=>'POST', 'id'=>'form-validation', 'name'=>'form-validation', 'enctype'=>'multipart/form-data')) !!}
-
+                    {!! Form::open(array('route' => 'employee.update','method'=>'POST', 'id'=>'form-validation', 'name'=>'form-validation', 'enctype'=>'multipart/form-data')) !!}
+                    <input value="{{$nhanvien->nhan_vien_id}}" class="form-control"    name="nhan_vien_id"  type="text" hidden>
                     <div class="row">
                         <div class="col-lg-6">
                             <label class="form-control-label">Username</label>
-                            <input class="form-control"  placeholder="Điền username"   name="username"  type="text" required>
+                            <input value="{{$nhanvien->username}}" class="form-control"  placeholder="Điền username"   name="username" required  type="text" require>
                         </div>
                         <div class="col-lg-6">
                             <label class="form-control-label">Password</label>
-                            <input class="form-control"  placeholder="Điền password"   name="password"  type="password" required>
+                            <input value="{{$nhanvien->password}}" class="form-control"  placeholder="Điền password"   name="password"  required type="password" >
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-lg-6">
                             <label class="form-control-label">Họ và tên</label>
-                            <input class="form-control"  placeholder="Điền họ tên"   name="ho_ten"  type="text" required>
+                            <input value="{{$nhanvien->ho_ten}}" class="form-control"  placeholder="Điền họ tên"   name="ho_ten" required  type="text" require>
                         </div>
                         <div class="col-lg-6">
                             <label class="form-control-label">Địa chỉ</label>
-                            <input class="form-control"  placeholder="Điền địa chỉ"   name="dia_chi"  type="text" required>
+                            <input value="{{$nhanvien->dia_chi}}" class="form-control"  placeholder="Điền địa chỉ"   name="dia_chi" required  type="text" >
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-lg-6">
                             <label class="form-control-label">Ngày sinh</label>
-                            <input class="form-control"  placeholder="điền ngày sinh"   name="ngay_sinh"  type="date" required>
+                            <input class="form-control" value="{{$nhanvien->ngay_sinh}}"  placeholder="điền ngày sinh"   name="ngay_sinh" required type="date" >
                         </div>
                         <div class="col-lg-6">
                             <label class="form-control-label">Số điện thoại</label>
-                            <input class="form-control"  placeholder="Điền số điện thoại"   name="sdt"  type="text" required>
+                            <input class="form-control" value="{{$nhanvien->sdt}}"  placeholder="Điền số điện thoại"   name="sdt"  required type="text">
                         </div>
                     </div>
                     <div class="row">
@@ -68,8 +68,14 @@
                                 <img src="" id="show-img"/>
                             </div>
                             <div class="form-group">
-                                <label class="form-control-label">Ảnh</label><br><br>
-                                <img src="{{ url('/upload') }}/no-image.png" id="avartar" src="#" class="img-avatar"/>
+                                <label class="form-control-label">Ảnh<span style="color:red; font-weight:900; font-size:20px;">*</span></label><br><br>
+
+                                @if (isset ($nhanvien["anh"]))
+                                    <img id="avartar" src="{{url("/")."/".$nhanvien["anh"]}}" class="img-avatar"/>
+                               @else
+                                    <img id="avartar" src="" class="img-avatar"/>
+
+                                @endif
                                 <input onchange="return showImg(this)" name="anh" type="file">
                             </div>
                         </div>
@@ -106,6 +112,7 @@
         }
     </script>
 
+
     <script>
         $(function() {
 
@@ -132,3 +139,4 @@
     </style>
     <!-- END: page scripts -->
 @include('components/footer')
+

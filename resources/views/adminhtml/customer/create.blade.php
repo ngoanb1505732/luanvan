@@ -1,4 +1,4 @@
-@section('title', 'Tạo nhân viên mới')
+@section('title', 'Tạo khách hàng mới')
 @include('main')
 @include('components/mainmenu')
 @include('components/breadcrumb')
@@ -9,10 +9,10 @@
     <section class="card">
         <div class="card-header">
             <div class="dropdown pull-right">
-                <a href="{{ route("employee")}}" class="btn btn-success "><i class="fa fa-undo"></i>&nbsp; &nbsp; Quay lại&nbsp; &nbsp;</a>
+                <a href="{{ route("customer")}}" class="btn btn-success "><i class="fa fa-undo"></i>&nbsp; &nbsp; Quay lại&nbsp; &nbsp;</a>
             </div>
             <span class="cat__core__title">
-            <strong>Thêm Nhân Viên Mới</strong>
+            <strong>Thêm Khách Hàng Mới</strong>
         </span>
         </div>
         <div class="card-body">
@@ -28,7 +28,7 @@
                     </div>
                 @endif
                 <div class="col-lg-12">
-                    {!! Form::open(array('route' => 'employee.save','method'=>'POST', 'id'=>'form-validation', 'name'=>'form-validation', 'enctype'=>'multipart/form-data')) !!}
+                    {!! Form::open(array('route' => 'customer.save','method'=>'POST', 'id'=>'form-validation', 'name'=>'form-validation', 'enctype'=>'multipart/form-data')) !!}
 
                     <div class="row">
                         <div class="col-lg-6">
@@ -62,22 +62,10 @@
                             <input class="form-control"  placeholder="Điền số điện thoại"   name="sdt"  type="text" required>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div>
-                                <img src="" id="show-img"/>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-control-label">Ảnh</label><br><br>
-                                <img src="{{ url('/upload') }}/no-image.png" id="avartar" src="#" class="img-avatar"/>
-                                <input onchange="return showImg(this)" name="anh" type="file">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-actions">
-                        <button type="submit" class="btn btn-primary width-150" >Xác nhận</button>
-                        <button type="reset" class="btn btn-warning width-150" >Hoàn tác</button>
-                        <a href="{{ route("employee")}}"  class="btn btn-default">Huỷ</a>
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary width-150" >Xác nhận</button>
+                                <button type="reset" class="btn btn-warning width-150" >Hoàn tác</button>
+                                <a href="{{ route("customer")}}"  class="btn btn-default">Huỷ</a>
                     </div>
                     {!! Form::close() !!}
                 </div>
