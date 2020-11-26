@@ -83,3 +83,5 @@
     <link rel="stylesheet" type="text/css" href="{!! asset('/dist/modules/apps/common/apps.cleanui.css') !!}">
     <script src="{!! asset('/dist/modules/menu-left/common/menu-left.cleanui.js') !!}"></script>
     <script src="{!! asset('/dist/modules/menu-right/common/menu-right.cleanui.js') !!}"></script>
+
+

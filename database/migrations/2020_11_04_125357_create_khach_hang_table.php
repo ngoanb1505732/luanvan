@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateNhanVienTable extends Migration
+class CreateKhachHangTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateNhanVienTable extends Migration
      */
     public function up()
     {
-        Schema::create('nhan_vien', function (Blueprint $table) {
-            $table->increments('nhan_vien_id',true,true);
+        Schema::create('khach_hang', function (Blueprint $table) {
+            $table->increments('khach_hang_id',true,true);
+
+//            $table->id('khach_hang_id');
             $table->string('ho_ten',50);
             $table->string('dia_chi',200)->nullable();
             $table->string('sdt',20)->nullable();
-            $table->string('anh',200)->nullable();
             $table->string('username',50);
             $table->string('password',50);
             $table->date('ngay_sinh')->nullable();
@@ -33,6 +34,6 @@ class CreateNhanVienTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('nhan_vien');
+        Schema::dropIfExists('khach_hang');
     }
 }

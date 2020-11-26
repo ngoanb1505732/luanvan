@@ -26,6 +26,20 @@
                 </a>
                 <ul class="cat__menu-left__list">
                     <li class="cat__menu-left__item">
+                        <a href="{{ route("service")}}">
+                            <span class="cat__menu-left__icon icmn-file-text2"></span>
+                            Dịch Vụ
+                        </a>
+                    </li>
+
+                    <li class="cat__menu-left__item">
+                        <a href="{{ route("process")}}">
+                            <span class="cat__menu-left__icon icmn-file-text2"></span>
+                            Liệu Trình
+                        </a>
+                    </li>
+
+                    <li class="cat__menu-left__item">
                         <a href="{{ url('pages')}}">
                             <span class="cat__menu-left__icon icmn-calendar"></span>
                             Lịch
@@ -41,13 +55,6 @@
                 <ul class="cat__menu-left__list">
                     <li class="cat__menu-left__item">
                         <a href="#">
-                            <span class="cat__menu-left__icon icmn-file-text2"></span>
-                            Dịch vụ
-                        </a>
-                    </li>
-
-                    <li class="cat__menu-left__item">
-                        <a href="#">
                             <span class="cat__menu-left__icon icmn-cart"></span>
                            Đơn hàng
                         </a>
@@ -61,13 +68,13 @@
                 </a>
                 <ul class="cat__menu-left__list">
                     <li class="cat__menu-left__item">
-                        <a href="{{ url("/admin/employee") }}">
+                        <a href="{{ route("employee")}}">
                             <span class="cat__menu-left__icon icmn-user-tie"></span>
                          Nhân Viên
                         </a>
                     </li>
                     <li class="cat__menu-left__item">
-                        <a href="#">
+                        <a href="{{ route("customer")}}">
                             <span class="cat__menu-left__icon icmn-user"></span>
                             Khách Hàng
                         </a>

@@ -1,4 +1,4 @@
-@section('title', 'Quản lý nhân viên')
+@section('title', 'Quản lý khách hàng')
 @include('main')
 @include('components/mainmenu')
 @include('components/breadcrumb')
@@ -8,10 +8,10 @@
 <section class="card">
     <div class="card-header">
         <div class="dropdown pull-right">
-           <a href="{{ route("employee.create")}}" class="btn btn-success "><i class="fa fa-plus"></i>&nbsp; &nbsp; Thêm Nhân Viên &nbsp; &nbsp;</a>
+           <a href="{{ route("customer.create")}}" class="btn btn-success "><i class="fa fa-plus"></i>&nbsp; &nbsp; Thêm Khách Hàng &nbsp; &nbsp;</a>
        </div>
         <span class="cat__core__title">
-            <strong>Danh Sách Nhân Viên</strong>
+            <strong>Danh Sách Khách Hàng</strong>
         </span>
     </div>
 
@@ -39,33 +39,27 @@
                 <th>ID</th>
                 <th>Username</th>
                 <th>Họ tên</th>
-                <th>Ảnh</th>
                 <th>Ngày sinh</th>
                 <th>Địa chỉ</th>
                 <th>Hành động</th>
             </tr>
             </thead>
             <tbody>
-            @foreach($employees as $employee)
+            @foreach($customers as $customer)
                 <tr>
-                    <th>{{$employee["nhan_vien_id"]}}</th>
-                    <th>{{$employee["username"]}}</th>
-                    <th>{{$employee["ho_ten"]}}</th>
-                    <th>
-                    @if (isset ($employee["anh"]))
-                        <img src="{{url("/")."/".$employee["anh"]}}" class="icon"
-                    @endif
-                    </th>
-                    <th>{{$employee["ngay_sinh"]}}</th>
-                    <th>{{$employee["dia_chi"]}}</th>
+                    <th>{{$customer["khach_hang_id"]}}</th>
+                    <th>{{$customer["username"]}}</th>
+                    <th>{{$customer["ho_ten"]}}</th>
+                    <th>{{$customer["ngay_sinh"]}}</th>
+                    <th>{{$customer["dia_chi"]}}</th>
                     <th>
                         <div class="dropdown d-inline-block">
                             <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                Hành Động
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="" role="menu">
-                                <a class="dropdown-item" href="<?php echo route("employee.edit",$employee["nhan_vien_id"]); ?>"> &nbsp; <i class="fa fa-pencil" aria-hidden="true"></i> &nbsp;  Sửa</a>
-                                <a class="dropdown-item" onclick="return confirm('Bạn chắc chắn muốn xóa');" href="<?php echo route("employee.delete",$employee["nhan_vien_id"]); ?>"> &nbsp; <i class="fa fa-trash" aria-hidden="true"></i> &nbsp; Xoá</a>
+                                <a class="dropdown-item" href="<?php echo route("customer.edit",$customer["khach_hang_id"]); ?>"> &nbsp; <i class="fa fa-pencil" aria-hidden="true"></i> &nbsp;  Sửa</a>
+                                <a class="dropdown-item" onclick="return confirm('Bạn chắc chắn muốn xóa');" href="<?php echo route("customer.delete",$customer["khach_hang_id"]); ?>"> &nbsp; <i class="fa fa-trash" aria-hidden="true"></i> &nbsp; Xoá</a>
                             </ul>
                         </div>
                     </th>
