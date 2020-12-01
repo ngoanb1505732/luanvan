@@ -130,7 +130,7 @@ class ProcessController extends Controller
 
              if($request->anh_lien_quan) {
                  foreach ($request->file("anh_lien_quan") as $item) {
-                     $fileName = time() . '.' . $item->extension();
+                     $fileName = $item->getFilename().time() . '.' . $item->extension();
                      $item->move(public_path('file/lieutrinh/anhlienquan'), $fileName);
                      $url = "file/lieutrinh/anhlienquan/" . $fileName;
                      $anhlienquan = new HinhAnh();

@@ -11,7 +11,15 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::group(['namespace' => 'Frontend'], function () {
+    Route::get('/', 'ActionController@index')->name("front-end.index");
+    Route::group(['namespace' => 'Service'], function () {
+        Route::get('/service/{id}', 'ServiceController@load')->name("front-end.service.load");
+    });
+    Route::group(['namespace' => 'Process'], function () {
+        Route::get('/process/{id}', 'ProcessController@load')->name("front-end.process.load");
+    });
+});
 
 Route::group(['middleware' => 'auth','prefix'=>'admin','namespace' => 'Adminhtml'], function () {
 

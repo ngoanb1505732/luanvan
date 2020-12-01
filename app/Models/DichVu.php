@@ -20,6 +20,6 @@ class DichVu extends Model
 
     public function lieuTrinh()
     {
-        return $this->hasMany('App\Models\LieuTrinh');
+        return $this->hasMany('App\Models\LieuTrinh','dich_vu_id');
     }
 }
