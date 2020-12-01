@@ -46,7 +46,7 @@
     <script type="text/javascript" src="{{url("/")}}/plugins/jquery-ui/jquery-ui.min.js"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAx39JFH5nhxze1ZydH-Kl8xXM3OK4fvcg&amp;region=GB"></script>
     <script type="text/javascript" src="{{url("/")}}/plugins/revolution/js/jquery.themepunch.tools.min.js"></script>
-    <script type="text/javascript" src="{{url("/")}}}/plugins/revolution/js/jquery.themepunch.revolution.min.js"></script>
+    <script type="text/javascript" src="{{url("/")}}/plugins/revolution/js/jquery.themepunch.revolution.min.js"></script>
     <script type="text/javascript" src="{{url("/")}}/plugins/revolution/js/extensions/revolution.extension.video.min.js"></script>
     <script type="text/javascript" src="{{url("/")}}/plugins/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
     <script type="text/javascript" src="{{url("/")}}/plugins/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
@@ -54,7 +54,7 @@
     <script type="text/javascript" src="{{url("/")}}/plugins/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
     <script type="text/javascript" src="{{url("/")}}/plugins/revolution/js/extensions/revolution.extension.actions.min.js"></script>
     <!-- Custom scripts-->
-    <script type="text/javascript" src="{{url("/")}}/js/main.js"></script>
+    <script type="text/javascript" src="{{url("frontend")}}/js/main.js"></script>
 </head>
 <!--[if IE 7]><body class="ie7 lt-ie8 lt-ie9 lt-ie10"><![endif]-->
 <!--[if IE 8]><body class="ie8 lt-ie9 lt-ie10"><![endif]-->
