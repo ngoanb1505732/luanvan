@@ -16,11 +16,11 @@ class HinhAnh extends Model
     protected $fillable = [
         'hinh_anh_id',
         'duong_dan',
-        'lieu_trinh_id'
+        'dich_vu_id'
     ];
 
-    public function lieuTrinh()
+    public function dichVu()
     {
-        return $this->belongsTo('App\Model\LieuTrinh', 'lieu_trinh_id');
+        return $this->belongsTo('App\Model\DichVu', 'dich_vu_id');
     }
 }

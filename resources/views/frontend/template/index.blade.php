@@ -95,12 +95,12 @@
                                             <li><a href="{{url("/")}}">Nhân viên</a></li>
                                         </ul>
                                     </div>
-                                    @foreach($service as $item)
+                                    @foreach($typeServices as $item)
                                         <div class="mega-column">
-                                            <h4 class="mega-heading"><a href="{{route("front-end.service.load",$item->dich_vu_id)}}">{{$item->ten_dich_vu}}</a></h4>
+                                            <h4 class="mega-heading"><a href="{{route("front-end.typeService.load",$item->loai_dich_vu_id)}}">{{$item->ten_loai_dich_vu}}</a></h4>
                                             <ul class="mega-item">
-                                                @foreach($item->lieuTrinh as $lieutrinh)
-                                                    <li><a href="{{route("front-end.process.load",$lieutrinh->lieu_trinh_id)}}">{{$lieutrinh->ten_lieu_trinh}}</a></li>
+                                                @foreach($item->dichVu as $dichVu)
+                                                    <li><a href="{{route("front-end.service.load",$dichVu->dich_vu_id)}}">{{$dichVu->ten_dich_vu}}</a></li>
                                                 @endforeach
                                             </ul>
                                         </div>

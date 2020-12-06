@@ -26,16 +26,16 @@
                 </a>
                 <ul class="cat__menu-left__list">
                     <li class="cat__menu-left__item">
-                        <a href="{{ route("service")}}">
+                        <a href="{{ route("typeService")}}">
                             <span class="cat__menu-left__icon icmn-file-text2"></span>
-                            Dịch Vụ
+                           Loại Dịch vụ
                         </a>
                     </li>
 
                     <li class="cat__menu-left__item">
-                        <a href="{{ route("process")}}">
+                        <a href="{{ route("service")}}">
                             <span class="cat__menu-left__icon icmn-file-text2"></span>
-                            Liệu Trình
+                            Dịch vụ
                         </a>
                     </li>
 

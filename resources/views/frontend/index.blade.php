@@ -23,9 +23,9 @@
                 <h3 class="ps-section__title" data-mask="Dịch vụ">Dịch vụ</h3>
                 <ul class="ps-masonry__filter">
                     <?php $t=0 ;?>
-                    @foreach($service as $item)
-                    <?php $t+=count($item->lieuTrinh); ?>
-                                <li><a href="#" data-filter=".{{$item->dich_vu_id}}">{{$item->ten_dich_vu}} <sup>{{count($item->lieuTrinh)}}</sup></a></li>
+                    @foreach($typeServices as $item)
+                    <?php $t+=count($item->dichVu); ?>
+                                <li><a href="#" data-filter=".{{$item->loai_dich_vu_id}}">{{$item->ten_loai_dich_vu}} <sup>{{count($item->dichVu)}}</sup></a></li>
                               @endforeach
                         <li><a href="#" data-filter="*">Tất cả <sup>{{$t}}</sup></a></li>
 
@@ -36,23 +36,23 @@
                     <div class="ps-masonry">
                         <div class="grid-sizer"></div>
 
-                        @foreach($service as $item)
-                            @foreach($item->lieuTrinh as $lieutrinh)
-                            <div class="grid-item {{$item->dich_vu_id}}">
+                        @foreach($typeServices as $item)
+                            @foreach($item->dichVu as $dichVu)
+                            <div class="grid-item {{$item->loai_dich_vu_id}}">
                                 <div class="grid-item__content-wrapper">
                                     <div class="ps-shoe mb-30">
 
                                         <div class="ps-shoe__thumbnail">
                                             <a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a>
-                                            <img src="{{url("/")}}/{{$lieutrinh->anh_dai_dien}}" alt=""><a class="ps-shoe__overlay" href="#"></a>
+                                            <img src="{{url("/")}}/{{$dichVu->anh_dai_dien}}" alt=""><a class="ps-shoe__overlay" href="#"></a>
                                         </div>
 
 
                                         <div class="ps-shoe__content">
                                             <div class="ps-shoe__variants">
                                                 <div class="ps-shoe__variant normal">
-                                                    <img src="{{url("/")}}/{{$lieutrinh->anh_dai_dien}}" alt="">
-                                                @foreach($lieutrinh->hinhAnh as $anh)
+                                                    <img src="{{url("/")}}/{{$dichVu->anh_dai_dien}}" alt="">
+                                                @foreach($dichVu->hinhAnh as $anh)
                                                         <img src="{{url("/")}}/{{$anh->duong_dan}}" alt="">
                                                     @endforeach
                                                 </div>
@@ -64,9 +64,9 @@
                                                     <option value="3">5</option>
                                                 </select>
                                             </div>
-                                            <div class="ps-shoe__detail"><a class="ps-shoe__name" href="#">{{$lieutrinh->ten_lieu_trinh}}</a>
-                                                <p class="ps-shoe__categories"><a href="{{route("front-end.process.load",$lieutrinh->lieu_trinh_id)}}">{{$item->ten_dich_vu}}</a></p><span class="ps-shoe__price">
-                              {{$lieutrinh->gia_tien}} VND</span>
+                                            <div class="ps-shoe__detail"><a class="ps-shoe__name" href="{{route("front-end.service.load",$dichVu->dich_vu_id)}}">{{$dichVu->ten_dich_vu}}</a>
+                                                <p class="ps-shoe__categories"><a href="{{route("front-end.service.load",$item->loai_dich_vu_id)}}">{{$item->ten_loai_dich_vu}}</a></p><span class="ps-shoe__price">
+                              {{$dichVu->gia_tien}} VND</span>
                                             </div>
                                         </div>
                                     </div>

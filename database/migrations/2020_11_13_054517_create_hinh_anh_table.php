@@ -16,9 +16,9 @@ class CreateHinhAnhTable extends Migration
         Schema::create('hinh_anh', function (Blueprint $table) {
             $table->increments('hinh_anh_id',true,true);
             $table->string('duong_dan',255);
-            $table->integer('lieu_trinh_id')->nullable()->unsigned();
-                  $table->foreign('lieu_trinh_id')
-                ->references('lieu_trinh_id')->on('lieu_trinh')
+            $table->integer('dich_vu_id')->nullable()->unsigned();
+                  $table->foreign('dich_vu_id')
+                ->references('dich_vu_id')->on('dich_vu')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
             $table->timestamps();

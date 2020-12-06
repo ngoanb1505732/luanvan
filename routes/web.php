@@ -13,11 +13,11 @@ use Illuminate\Support\Facades\Route;
 */
 Route::group(['namespace' => 'Frontend'], function () {
     Route::get('/', 'ActionController@index')->name("front-end.index");
+    Route::group(['namespace' => 'TypeService'], function () {
+        Route::get('/typeservice/{id}', 'TypeServiceController@load')->name("front-end.typeService.load");
+    });
     Route::group(['namespace' => 'Service'], function () {
         Route::get('/service/{id}', 'ServiceController@load')->name("front-end.service.load");
-    });
-    Route::group(['namespace' => 'Process'], function () {
-        Route::get('/process/{id}', 'ProcessController@load')->name("front-end.process.load");
     });
 });
 
@@ -51,6 +51,18 @@ Route::group(['middleware' => 'auth','prefix'=>'admin','namespace' => 'Adminhtml
 
     });
 
+    Route::group(['namespace' => 'TypeService','prefix'=>'typeService'], function()
+    {
+        Route::get('/', 'TypeServiceController@index')->name("typeService");
+        Route::get('/create', 'TypeServiceController@create')->name('typeService.create');
+        Route::post('/save', 'TypeServiceController@save')->name('typeService.save');
+        Route::get('/delete/{id}', 'TypeServiceController@delete')->name('typeService.delete');
+        Route::get('/edit/{id}', 'TypeServiceController@edit')->name('typeService.edit');
+        Route::post('/update', 'TypeServiceController@update')->name('typeService.update');
+
+    });
+
+
     Route::group(['namespace' => 'Service','prefix'=>'service'], function()
     {
         Route::get('/', 'ServiceController@index')->name("service");
@@ -59,18 +71,6 @@ Route::group(['middleware' => 'auth','prefix'=>'admin','namespace' => 'Adminhtml
         Route::get('/delete/{id}', 'ServiceController@delete')->name('service.delete');
         Route::get('/edit/{id}', 'ServiceController@edit')->name('service.edit');
         Route::post('/update', 'ServiceController@update')->name('service.update');
-
-    });
-
-
-    Route::group(['namespace' => 'Process','prefix'=>'process'], function()
-    {
-        Route::get('/', 'ProcessController@index')->name("process");
-        Route::get('/create', 'ProcessController@create')->name('process.create');
-        Route::post('/save', 'ProcessController@save')->name('process.save');
-        Route::get('/delete/{id}', 'ProcessController@delete')->name('process.delete');
-        Route::get('/edit/{id}', 'ProcessController@edit')->name('process.edit');
-        Route::post('/update', 'ProcessController@update')->name('process.update');
 
     });
 
