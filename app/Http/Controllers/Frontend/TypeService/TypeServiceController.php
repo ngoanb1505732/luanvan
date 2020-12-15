@@ -4,9 +4,10 @@
 namespace App\Http\Controllers\Frontend\TypeService;
 
 
+use App\Http\Controllers\Controller;
 use App\Models\LoaiDichVu;
 
-class TypeServiceController
+class TypeServiceController extends Controller
 {
     public function load($id) {
         $typeServices = LoaiDichVu::all();

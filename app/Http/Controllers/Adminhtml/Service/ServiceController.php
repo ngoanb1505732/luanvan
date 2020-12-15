@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Adminhtml\Service;
 
 use App\Http\Controllers\Controller;
 use App\Models\DichVu;
+use App\Models\LieuTrinh;
 use Illuminate\Http\Request;
 use App\Models\LoaiDichVu;
 use App\Models\HinhAnh;
@@ -26,7 +27,8 @@ class ServiceController extends Controller
     public function create(){
         $trangthai = \App\Models\DichVu::$STATUS;
         $typeServices = LoaiDichVu::all();
-        return view('/adminhtml/service/create',compact(["trangthai","typeServices"]));
+        $process =LieuTrinh::all();
+        return view('/adminhtml/service/create',compact(["trangthai","typeServices","process"]));
 
     }
 
@@ -37,6 +39,7 @@ class ServiceController extends Controller
             $dichVu->trang_thai =  $request->trang_thai;
             $dichVu->mo_ta = $request->mo_ta;
             $dichVu->loai_dich_vu_id = $request->loai_dich_vu_id;
+            $dichVu->lieu_trinh_id = $request->lieu_trinh_id;
             if($request->anh_dai_dien){
                 $request->validate([
                     'anh_dai_dien' => 'file|mimes:jpg,jpeg,bmp,png,doc,docx,csv,rtf,xlsx,xls,txt,pdf,zip',
@@ -51,7 +54,7 @@ class ServiceController extends Controller
             $dichVu->save();
             if($request->anh_lien_quan){
                 foreach ($request->file("anh_lien_quan") as $item){
-                    $fileName = time() . '.' . $item->extension();
+                    $fileName = $item->getFilename().time() . '.' . $item->extension();
                     $item->move(public_path('file/dichVu/anhlienquan'), $fileName);
                     $url = "file/dichVu/anhlienquan/".$fileName;
                     $anhlienquan = new HinhAnh();
@@ -90,10 +93,11 @@ class ServiceController extends Controller
     public function edit($id)
     {
         try {
+            $process =LieuTrinh::all();
             $dichVu = \App\Models\DichVu::findOrFail((int)$id);
             $trangthai = \App\Models\DichVu::$STATUS;
             $loaiDichVu = LoaiDichVu::all();
-            return view('/adminhtml/service/edit', compact(["dichVu","trangthai","loaiDichVu"]));
+            return view('/adminhtml/service/edit', compact(["dichVu","trangthai","loaiDichVu","process"]));
         } catch (Exception $e) {
             return $e;
         }
@@ -106,6 +110,7 @@ class ServiceController extends Controller
             $dichVu->trang_thai = $request->trang_thai;
             $dichVu->mo_ta = $request->mo_ta;
             $dichVu->loai_dich_vu_id = $request->loai_dich_vu_id;
+             $dichVu->lieu_trinh_id = $request->lieu_trinh_id;
             if($request->anh_dai_dien){
                 if($dichVu->anh_dai_dien){
                     File::delete($dichVu->anh_dai_dien);
@@ -134,7 +139,7 @@ class ServiceController extends Controller
                      $item->move(public_path('file/dichVu/anhlienquan'), $fileName);
                      $url = "file/dichVu/anhlienquan/" . $fileName;
                      $anhlienquan = new HinhAnh();
-                     $anhlienquan->lieu_trinh_id = $request->lieu_trinh_id;
+                     $anhlienquan->dich_vu_id = $request->dich_vu_id;
                      $anhlienquan->duong_dan = $url;
                      $anhlienquan->save();
                  }

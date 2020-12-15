@@ -40,6 +40,7 @@
                 <th>Tên dịch vụ</th>
                 <th>Trạng thái</th>
                 <th>Dịch vụ</th>
+                <th>Liệu trình</th>
                 <th>Giá tiền</th>
                 <th>Thời gian</th>
                 <th>Hành động</th>
@@ -52,6 +53,7 @@
                     <th>{{$item["ten_dich_vu"]}}</th>
                     <th>{{$item["trang_thai"]}}</th>
                     <th>{{$item->loaiDichVu->ten_loai_dich_vu}}</th>
+                    <th>{{$item->lieuTrinh!= null ? $item->lieuTrinh->ten_lieu_trinh : ""}}</th>
                     <th>{{$item["gia_tien"]}} vnd</th>
                     <th>{{$item["thoi_gian"]}} phút</th>
                     <th>

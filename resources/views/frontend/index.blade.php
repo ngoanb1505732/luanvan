@@ -44,7 +44,7 @@
 
                                         <div class="ps-shoe__thumbnail">
                                             <a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a>
-                                            <img src="{{url("/")}}/{{$dichVu->anh_dai_dien}}" alt=""><a class="ps-shoe__overlay" href="#"></a>
+                                            <img src="{{url("/")}}/{{$dichVu->anh_dai_dien}}" alt=""><a class="ps-shoe__overlay" href="{{route("front-end.service.load",$dichVu->dich_vu_id)}}"></a>
                                         </div>
 
 
@@ -65,7 +65,7 @@
                                                 </select>
                                             </div>
                                             <div class="ps-shoe__detail"><a class="ps-shoe__name" href="{{route("front-end.service.load",$dichVu->dich_vu_id)}}">{{$dichVu->ten_dich_vu}}</a>
-                                                <p class="ps-shoe__categories"><a href="{{route("front-end.service.load",$item->loai_dich_vu_id)}}">{{$item->ten_loai_dich_vu}}</a></p><span class="ps-shoe__price">
+                                                <p class="ps-shoe__categories"><a href="{{route("front-end.typeService.load",$item->loai_dich_vu_id)}}">{{$item->ten_loai_dich_vu}}</a></p><span class="ps-shoe__price">
                               {{$dichVu->gia_tien}} VND</span>
                                             </div>
                                         </div>
@@ -183,6 +183,9 @@
 
     .active-dot, .dot:hover {
         background-color: #717171;
+    }
+    .text-danger{
+        font-size: 14px;
     }
 </style>
 

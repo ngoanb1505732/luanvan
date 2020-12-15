@@ -37,10 +37,10 @@ class CustomerController extends Controller
             $khachhang->password = $request->password;
             $khachhang->ngay_sinh = $request->ngay_sinh;
             $khachhang->save();
-            return redirect()->route('customer')->with('success', 'Thêm khách hàng thành công!');;
+            return redirect()->route('customer')->with('success', 'Thêm khách hàng thành công!');
         }
         catch(Exception $e){
-            return redirect()->route('customer')->with('error', 'Thêm khách hàng thất bại!');;
+            return redirect()->route('customer')->with('error', 'Thêm khách hàng thất bại!');
 
         }
     }

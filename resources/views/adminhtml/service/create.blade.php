@@ -1,4 +1,4 @@
-@section('title', 'Tạo Liệu Trình Mới ')
+@section('title', 'Tạo Dịch Vụ Mới ')
 @include('main')
 @include('components/mainmenu')
 @include('components/breadcrumb')
@@ -34,9 +34,21 @@
                     {!! Form::open(array('route' => 'service.save','method'=>'POST', 'id'=>'form-validation', 'name'=>'form-validation', 'enctype'=>'multipart/form-data')) !!}
 
                     <div class="row">
-                        <div class="col-lg-12 col-xs-12 form-group">
+                        <div class="col-lg-6 col-xs-6 form-group">
                             <label class="form-control-label">Tên Dịch Vụ</label>
                             <input class="form-control"  placeholder="Điền tên dịch vụ"   name="ten_dich_vu"  type="text" required>
+                        </div>
+
+                        <div class="col-lg-6  col-xs-6 form-group">
+                            <label class="form-control-label">Liệu Trình</label>
+                            <select class="form-control" name="lieu_trinh_id">
+                                @foreach($process as $itemProcess)
+                                    <option value="{{$itemProcess->lieu_trinh_id}}" >{{$itemProcess->ten_lieu_trinh}}</option>
+                                @endforeach
+                                    <option value="" selected></option>
+
+                            </select>
+
                         </div>
                     </div>
 
@@ -44,16 +56,8 @@
                         <div class="col-lg-6 col-xs-6 form-group">
                             <label class="form-control-label">Trạng Thái</label>
                             <select class="form-control" name="trang_thai">
-                                <?php
-                                $isFirst = true;
-                                ?>
                                 @foreach($trangthai as $item)
-                                    @if($isFirst)
                                     <option value="{{$item}}" selected>{{$item}}</option>
-                                        @else
-                                            <option value="{{$item}}"> {{$item}}</option>
-            <?php $isFirst = false; ?>
-                                        @endif
                                 @endforeach
                             </select>
                         </div>

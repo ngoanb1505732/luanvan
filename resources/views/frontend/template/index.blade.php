@@ -1,7 +1,10 @@
 <!DOCTYPE html>
-<!--[if IE 7]><html class="ie ie7"><![endif]-->
-<!--[if IE 8]><html class="ie ie8"><![endif]-->
-<!--[if IE 9]><html class="ie ie9"><![endif]-->
+<!--[if IE 7]>
+<html class="ie ie7"><![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8"><![endif]-->
+<!--[if IE 9]>
+<html class="ie ie9"><![endif]-->
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -10,7 +13,9 @@
     <title>@yield("title")</title>
     <!-- Fonts-->
     <link rel="stylesheet" href="{{url("frontend")}}/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Archivo+Narrow:300,400,700%7CMontserrat:300,400,500,600,700,800,900" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Archivo+Narrow:300,400,700%7CMontserrat:300,400,500,600,700,800,900"
+        rel="stylesheet">
     <link rel="stylesheet" href="{{url("frontend")}}/plugins/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{url("frontend")}}/plugins/ps-icon/style.css">
     <!-- CSS Library-->
@@ -44,21 +49,35 @@
     <script type="text/javascript" src="{{url("/")}}/plugins/elevatezoom/jquery.elevatezoom.js"></script>
     <script type="text/javascript" src="{{url("/")}}/plugins/Magnific-Popup/dist/jquery.magnific-popup.min.js"></script>
     <script type="text/javascript" src="{{url("/")}}/plugins/jquery-ui/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAx39JFH5nhxze1ZydH-Kl8xXM3OK4fvcg&amp;region=GB"></script>
+    <script type="text/javascript"
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAx39JFH5nhxze1ZydH-Kl8xXM3OK4fvcg&amp;region=GB"></script>
     <script type="text/javascript" src="{{url("/")}}/plugins/revolution/js/jquery.themepunch.tools.min.js"></script>
-    <script type="text/javascript" src="{{url("/")}}/plugins/revolution/js/jquery.themepunch.revolution.min.js"></script>
-    <script type="text/javascript" src="{{url("/")}}/plugins/revolution/js/extensions/revolution.extension.video.min.js"></script>
-    <script type="text/javascript" src="{{url("/")}}/plugins/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
-    <script type="text/javascript" src="{{url("/")}}/plugins/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
-    <script type="text/javascript" src="{{url("/")}}/plugins/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
-    <script type="text/javascript" src="{{url("/")}}/plugins/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
-    <script type="text/javascript" src="{{url("/")}}/plugins/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+    <script type="text/javascript"
+            src="{{url("/")}}/plugins/revolution/js/jquery.themepunch.revolution.min.js"></script>
+    <script type="text/javascript"
+            src="{{url("/")}}/plugins/revolution/js/extensions/revolution.extension.video.min.js"></script>
+    <script type="text/javascript"
+            src="{{url("/")}}/plugins/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+    <script type="text/javascript"
+            src="{{url("/")}}/plugins/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+    <script type="text/javascript"
+            src="{{url("/")}}/plugins/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+    <script type="text/javascript"
+            src="{{url("/")}}/plugins/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+    <script type="text/javascript"
+            src="{{url("/")}}/plugins/revolution/js/extensions/revolution.extension.actions.min.js"></script>
     <!-- Custom scripts-->
     <script type="text/javascript" src="{{url("frontend")}}/js/main.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
-<!--[if IE 7]><body class="ie7 lt-ie8 lt-ie9 lt-ie10"><![endif]-->
-<!--[if IE 8]><body class="ie8 lt-ie9 lt-ie10"><![endif]-->
-<!--[if IE 9]><body class="ie9 lt-ie10"><![endif]-->
+<!--[if IE 7]>
+<body class="ie7 lt-ie8 lt-ie9 lt-ie10"><![endif]-->
+<!--[if IE 8]>
+<body class="ie8 lt-ie9 lt-ie10"><![endif]-->
+<!--[if IE 9]>
+<body class="ie9 lt-ie10"><![endif]-->
 <body class="ps-loading">
 <div class="header--sidebar"></div>
 <header class="header">
@@ -66,12 +85,30 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-6 col-md-8 col-sm-6 col-xs-12 ">
-                    <p>Spa Duyên Cần Thơ -  Hotline: 804-377-3580 </p>
+                    <p>Spa Duyên Cần Thơ - Hotline: 804-377-3580 </p>
                 </div>
                 <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12 ">
-                    <div class="header__actions"><a href="#">Đăng nhập</a>
-                        <div class="header__actions"><a href="#">Đăng ký</a>
-                        </div>
+                    <div class="header__actions">
+
+                        @if(Session::has('username'))
+                            <div class="btn-group ps-dropdown" onclick="showDropdown(this)">
+                                <a class="dropdown-toggle" href="#"
+                                   data-toggle="dropdown" aria-haspopup="true"
+                                   aria-expanded="true">{{ Session::get('username')}}<i
+                                        class="fa fa-angle-down"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Thông tin tài khoản</a></li>
+                                    <li><a href="#">Lịch hẹn</a></li>
+                                    <li><a href="#">Lịch sử</a></li>
+                                    <li><a href="{{route("customer.logout")}}">Đăng xuất</a></li>
+                                </ul>
+                            </div>
+                        @else
+                            <a href="{{route("customer.login")}}">Đăng nhập</a>
+                            <div class="header__actions">
+                                <a href="{{route("customer.register")}}">Đăng ký</a>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -79,7 +116,9 @@
         <nav class="navigation">
             <div class="container-fluid">
                 <div class="navigation__column left">
-                    <div class="header__logo"><a class="ps-logo" href="{{url("/")}}"><img style="height: 125px" src="{{url("/frontend")}}/images/logo.jpg" alt=""></a></div>
+                    <div class="header__logo"><a class="ps-logo" href="{{url("/")}}"><img style="height: 125px"
+                                                                                          src="{{url("/frontend")}}/images/logo.jpg"
+                                                                                          alt=""></a></div>
                 </div>
                 <div class="navigation__column center">
                     <ul class="main-menu menu">
@@ -97,10 +136,14 @@
                                     </div>
                                     @foreach($typeServices as $item)
                                         <div class="mega-column">
-                                            <h4 class="mega-heading"><a href="{{route("front-end.typeService.load",$item->loai_dich_vu_id)}}">{{$item->ten_loai_dich_vu}}</a></h4>
+                                            <h4 class="mega-heading"><a
+                                                    href="{{route("front-end.typeService.load",$item->loai_dich_vu_id)}}">{{$item->ten_loai_dich_vu}}</a>
+                                            </h4>
                                             <ul class="mega-item">
                                                 @foreach($item->dichVu as $dichVu)
-                                                    <li><a href="{{route("front-end.service.load",$dichVu->dich_vu_id)}}">{{$dichVu->ten_dich_vu}}</a></li>
+                                                    <li>
+                                                        <a href="{{route("front-end.service.load",$dichVu->dich_vu_id)}}">{{$dichVu->ten_dich_vu}}</a>
+                                                    </li>
                                                 @endforeach
                                             </ul>
                                         </div>
@@ -117,33 +160,49 @@
                         <input class="form-control" type="text" placeholder="Search Product…">
                         <button><i class="ps-icon-search"></i></button>
                     </form>
-                    <div class="ps-cart"><a class="ps-cart__toggle" href="#"><span><i>20</i></span><i class="ps-icon-shopping-cart"></i></a>
+                    <div class="ps-cart" id="ps-cart">
+                        <a class="ps-cart__toggle" href="#"><span><i>0</i></span><i
+                                class="ps-icon-shopping-cart"></i></a>
                         <div class="ps-cart__listing">
-                            <div class="ps-cart__content">
-                                <div class="ps-cart-item"><a class="ps-cart-item__close" href="#"></a>
-                                    <div class="ps-cart-item__thumbnail"><a href="product-detail.html"></a><img src="images/cart-preview/1.jpg" alt=""></div>
-                                    <div class="ps-cart-item__content"><a class="ps-cart-item__title" href="product-detail.html">Amazin’ Glazin’</a>
-                                        <p><span>Quantity:<i>12</i></span><span>Total:<i>£176</i></span></p>
-                                    </div>
-                                </div>
-                                <div class="ps-cart-item"><a class="ps-cart-item__close" href="#"></a>
-                                    <div class="ps-cart-item__thumbnail"><a href="product-detail.html"></a><img src="images/cart-preview/2.jpg" alt=""></div>
-                                    <div class="ps-cart-item__content"><a class="ps-cart-item__title" href="product-detail.html">The Crusty Croissant</a>
-                                        <p><span>Quantity:<i>12</i></span><span>Total:<i>£176</i></span></p>
-                                    </div>
-                                </div>
-                                <div class="ps-cart-item"><a class="ps-cart-item__close" href="#"></a>
-                                    <div class="ps-cart-item__thumbnail"><a href="product-detail.html"></a><img src="images/cart-preview/3.jpg" alt=""></div>
-                                    <div class="ps-cart-item__content"><a class="ps-cart-item__title" href="product-detail.html">The Rolling Pin</a>
-                                        <p><span>Quantity:<i>12</i></span><span>Total:<i>£176</i></span></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ps-cart__total">
-                                <p>Number of items:<span>36</span></p>
-                                <p>Item Total:<span>£528.00</span></p>
-                            </div>
-                            <div class="ps-cart__footer"><a class="ps-btn" href="cart.html">Check out<i class="ps-icon-arrow-left"></i></a></div>
+{{--                            <div class="ps-cart__content">--}}
+{{--                                <div class="ps-cart-item">--}}
+{{--                                    <a class="ps-cart-item__close" href="#"></a>--}}
+{{--                                    <div class="ps-cart-item__thumbnail">--}}
+{{--                                        <a href="product-detail.html"></a>--}}
+{{--                                        <img src="images/cart-preview/1.jpg" alt=""></div>--}}
+{{--                                    <div class="ps-cart-item__content">--}}
+{{--                                        <a class="ps-cart-item__title" href="product-detail.html">Chăm sóc tóc</a>--}}
+{{--                                        <p>--}}
+{{--                                            <span>Thời gian:<i>30 phút</i></span>--}}
+{{--                                            <span>Giá:<i>300000 VND</i></span>--}}
+{{--                                    </p>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+
+{{--                                <div class="ps-cart-item">--}}
+{{--                                    <a class="ps-cart-item__close" href="#"></a>--}}
+{{--                                    <div class="ps-cart-item__thumbnail">--}}
+{{--                                        <a href="product-detail.html"></a>--}}
+{{--                                        <img src="images/cart-preview/1.jpg" alt=""></div>--}}
+{{--                                    <div class="ps-cart-item__content">--}}
+{{--                                        <a class="ps-cart-item__title" href="product-detail.html">Chăm sóc da</a>--}}
+{{--                                        <p>--}}
+{{--                                            <span>Thời gian:<i>60 phút</i></span>--}}
+{{--                                            <span>Giá:<i>400000 VND</i></span>--}}
+{{--                                        </p>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                          </div>--}}
+{{--                            <div class="ps-cart__total">--}}
+{{--                                <p>Số dịch vụ<span>1</span></p>--}}
+{{--                                <p>Tổng thời gian :<span>30 phút</span></p>--}}
+{{--                                <p>Tổng tiền :<span> 500 vnd</span></p>--}}
+{{--                            </div>--}}
+{{--                            <div class="ps-cart__footer">--}}
+{{--                                <a class="ps-btn" href="#">Đặt lịch<i--}}
+{{--                                        class="ps-icon-arrow-left"></i>--}}
+{{--                                </a>--}}
+{{--                            </div>--}}
                         </div>
                     </div>
                     <div class="menu-toggle"><span></span></div>
@@ -152,10 +211,14 @@
         </nav>
 </header>
 <div class="header-services">
-    <div class="ps-services owl-slider" data-owl-auto="true" data-owl-loop="true" data-owl-speed="7000" data-owl-gap="0" data-owl-nav="true" data-owl-dots="false" data-owl-item="1" data-owl-item-xs="1" data-owl-item-sm="1" data-owl-item-md="1" data-owl-item-lg="1" data-owl-duration="1000" data-owl-mousedrag="on">
+    <div class="ps-services owl-slider" data-owl-auto="true" data-owl-loop="true" data-owl-speed="7000" data-owl-gap="0"
+         data-owl-nav="true" data-owl-dots="false" data-owl-item="1" data-owl-item-xs="1" data-owl-item-sm="1"
+         data-owl-item-md="1" data-owl-item-lg="1" data-owl-duration="1000" data-owl-mousedrag="on">
         <p class="ps-service"><i class="fa fa-diamond"></i><strong>Đăng ký tài khoản</strong>: Đặt lịch nhanh chóng</p>
-        <p class="ps-service"><i class="fa fa-black-tie"></i><strong>Nhân viên</strong>: Chuyên môn cao, được tập huấn kĩ càng</p>
-        <p class="ps-service"><i class="fa fa-paper-plane-o"></i><strong>Trang thiết bị</strong>: Hiện đại, được nhập khẩu </p>
+        <p class="ps-service"><i class="fa fa-black-tie"></i><strong>Nhân viên</strong>: Chuyên môn cao, được tập huấn
+            kĩ càng</p>
+        <p class="ps-service"><i class="fa fa-paper-plane-o"></i><strong>Trang thiết bị</strong>: Hiện đại, được nhập
+            khẩu </p>
 
     </div>
 
@@ -229,5 +292,104 @@
     </div>
 </main>
 </body>
+<style>
+    .btn-primary {
+        background-color: #2AC37D;
+        color: white
+    }
+
+    .btn-primary:hover {
+        background-color: #23be76;
+        color: white
+    }
+    .ps-cart-item__content p span {
+    color:white;
+    }
+</style>
+<script>
+      function showDropdown(el){
+          console.log("phuc");
+        let atr = el.getAttribute("class");
+        if(atr.indexOf("open") == -1){
+            atr = atr+ " open";
+            el.setAttribute("class",atr);
+        }
+        else {
+            atr = atr.replace("open", "");
+           el.setAttribute("class",atr);
+        }
+    }
+
+
+    function redenderNumberCart(number){
+         return '<a class="ps-cart__toggle" href="#"><span><i>'+number+'</i></span><i class="ps-icon-shopping-cart"></i></a>';
+    }
+    function renderListCart(){
+          let str='         <div class="ps-cart__listing">' +
+              '                            <div class="ps-cart__content">';
+        let cart = localStorage.getItem('{{ Session::get("username")}}-cart');
+        if (cart == null || cart == "") {
+            cart = "[]";
+        }
+        let data = JSON.parse(cart);
+        let time = 0;
+        let price = 0;
+        data.forEach(function(el){
+            str+='  <div class="ps-cart-item">\n' +
+                '                                    <a class="ps-cart-item__close" href="#" onclick="removeItemCart('+el.serviceID+')"></a>\n' +
+                '                                    <div class="ps-cart-item__thumbnail">\n' +
+                '                                        <a href="#"></a>\n' +
+                '                                        <img src="'+el.urlImg+'" alt=""></div>\n' +
+                '                                    <div class="ps-cart-item__content">\n' +
+                '                                        <a class="ps-cart-item__title" href="{{url("front-end.service.load")}}/'+el.serviceID+'">'+el.name+'</a>\n' +
+                '                                        <p>\n' +
+                '                                            <span>Thời gian:<i>'+el.time+' phút</i></span>\n' +
+                '                                            <span>Giá:<i>'+el.price+' VND</i></span>\n' +
+                '                                    </p>\n' +
+                '                                    </div></div>';
+                time+=Number(el.time);
+                price+=Number(el.price);
+        });
+          str+="</div>";
+        if(time != undefined && time>0){
+            str+='     <div class="ps-cart__total">\n' +
+                '                                <p>Số dịch vụ<span>'+data.length+'</span></p>\n' +
+                '                                <p>Tổng thời gian :<span>'+Number(time)+' phút</span></p>\n' +
+                '                                <p>Tổng tiền :<span> '+Number(price)+' vnd</span></p>\n' +
+                '                            </div>';
+        }
+
+        str+="</div>";
+          return redenderNumberCart(data.length)+str;
+
+    }
+
+
+    function removeItemCart(serviceID){
+        let cart = localStorage.getItem('{{ Session::get("username")}}-cart');
+        if (cart == null || cart == "") {
+            cart = "[]";
+        }
+        let data = JSON.parse(cart);
+
+        let find = data.find(function (el) {
+            return el.serviceID == serviceID
+        });
+        let index = data.indexOf(find);
+
+        if(index != -1){
+            data.splice(index, 1);
+            localStorage.setItem('{{ Session::get("username")}}-cart', JSON.stringify(data));
+            loadListCart();
+        }
+    }
+
+    function loadListCart(){
+          document.getElementById("ps-cart").innerHTML = renderListCart();
+    }
+      $( document ).ready(function() {
+          loadListCart();
+      });
+</script>
 </html>
 

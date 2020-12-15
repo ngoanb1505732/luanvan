@@ -33,11 +33,11 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <label class="form-control-label">Username</label>
-                            <input value="{{$khachhang->username}}" class="form-control"  placeholder="Điền username"   name="username" required  type="text" require>
+                            <input value="{{$khachhang->username}}" class="form-control"  placeholder="Điền username"   name="username" required  type="text" readonly>
                         </div>
                         <div class="col-lg-6">
                             <label class="form-control-label">Password</label>
-                            <input value="{{$khachhang->password}}" class="form-control"  placeholder="Điền password"   name="password"  required type="password" >
+                            <input value="{{$khachhang->password}}" class="form-control"  placeholder="Điền password" minlength="6"   name="password"  required type="password" >
                         </div>
                     </div>
 

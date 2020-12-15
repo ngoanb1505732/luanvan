@@ -11,8 +11,8 @@ class DichVu extends Model
 {
     use HasFactory;
     public static $STATUS=array(
-        "Còn hoạt động"=>"Còn hoạt động",
-        "Hết hoạt động"=>"Hết hoạt động"
+         "Hết hoạt động"=>"Hết hoạt động",
+         "Còn hoạt động"=>"Còn hoạt động"
     );
     protected $table = 'dich_vu';
     protected $primaryKey = 'dich_vu_id';
@@ -24,6 +24,7 @@ class DichVu extends Model
         'mo_ta',
         'anh_dai_dien',
         'loai_dich_vu_id',
+        'lieu_trinh_id',
         'gia_tien',
         'thoi_gian',
         'created_at'
@@ -37,5 +38,9 @@ class DichVu extends Model
     public function hinhAnh()
     {
         return $this->hasMany('App\Models\HinhAnh','dich_vu_id');
+    }
+    public function lieuTrinh(){
+        return $this->belongsTo('App\Models\LieuTrinh', 'lieu_trinh_id');
+
     }
 }

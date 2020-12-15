@@ -33,6 +33,13 @@
                     </li>
 
                     <li class="cat__menu-left__item">
+                        <a href="{{ route("process")}}">
+                            <span class="cat__menu-left__icon icmn-file-text2"></span>
+                            Liệu Trình
+                        </a>
+                    </li>
+
+                    <li class="cat__menu-left__item">
                         <a href="{{ route("service")}}">
                             <span class="cat__menu-left__icon icmn-file-text2"></span>
                             Dịch vụ

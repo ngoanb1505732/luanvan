@@ -11,8 +11,23 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
+
+
 Route::group(['namespace' => 'Frontend'], function () {
     Route::get('/', 'ActionController@index')->name("front-end.index");
+
+    Route::group(['namespace' => 'Customer','prefix'=>'customer'], function () {
+        Route::get('/register', 'CustomerController@register')->name("customer.register");
+        Route::post('/register', 'CustomerController@registerAction')->name("customer.registerAction");
+        Route::get('/login', 'CustomerController@login')->name("customer.login");
+        Route::get('/logout', 'CustomerController@logout')->name("customer.logout");
+        Route::post('/login', 'CustomerController@loginAction')->name("customer.loginAction");
+
+    });
+
+
     Route::group(['namespace' => 'TypeService'], function () {
         Route::get('/typeservice/{id}', 'TypeServiceController@load')->name("front-end.typeService.load");
     });
@@ -71,6 +86,18 @@ Route::group(['middleware' => 'auth','prefix'=>'admin','namespace' => 'Adminhtml
         Route::get('/delete/{id}', 'ServiceController@delete')->name('service.delete');
         Route::get('/edit/{id}', 'ServiceController@edit')->name('service.edit');
         Route::post('/update', 'ServiceController@update')->name('service.update');
+
+    });
+
+
+    Route::group(['namespace' => 'Process','prefix'=>'process'], function()
+    {
+        Route::get('/', 'ProcessController@index')->name("process");
+        Route::get('/create', 'ProcessController@create')->name('process.create');
+        Route::post('/save', 'ProcessController@save')->name('process.save');
+        Route::get('/delete/{id}', 'ProcessController@delete')->name('process.delete');
+        Route::get('/edit/{id}', 'ProcessController@edit')->name('process.edit');
+        Route::post('/update', 'ProcessController@update')->name('process.update');
 
     });
 

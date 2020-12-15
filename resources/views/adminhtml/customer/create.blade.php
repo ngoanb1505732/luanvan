@@ -33,11 +33,11 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <label class="form-control-label">Username</label>
-                            <input class="form-control"  placeholder="Điền username"   name="username"  type="text" required>
+                            <input class="form-control"  placeholder="Điền username" onchange="validateUsername()"   name="username" minlength="5" type="text" required>
                         </div>
                         <div class="col-lg-6">
                             <label class="form-control-label">Password</label>
-                            <input class="form-control"  placeholder="Điền password"   name="password"  type="password" required>
+                            <input class="form-control"  placeholder="Điền password"   name="password" minlength="6"  type="password" required>
                         </div>
                     </div>
 
@@ -110,6 +110,23 @@
 
 
         });
+
+
+        function validateUsername(){
+            let username = document.getElementById("username");
+            $.ajax({url: "http://localhost/luanvan/public/api",
+                data:{"action":"checkCustomerExist","username":username.value},
+                method:"POST",
+                success: function(result){
+                    if(result == "true"){
+                        username.setCustomValidity("Username đã tồn tại");
+                    }
+                    else {
+                        username.setCustomValidity("");
+                    }
+                }
+            });
+        }
     </script>
     <style>
         .img-avatar{
