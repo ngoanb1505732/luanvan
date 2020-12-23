@@ -81,7 +81,7 @@
     </div>
     <div class="ps-section--offer">
         <div class="ps-column"><a class="ps-offer" href="product-listing.html"><img src="{{url("frontend/banner")}}/banner1.jpg" alt=""></a></div>
-        <div class="ps-column"><a class="ps-offer" href="product-listing.html"><img src="{{url("frontend/banner")}}/banner2.jpg" alt=""></a></div>
+        <div class="ps-column"><a class="ps-offer" href="product-listing.html"><img src="{{url("frontend/banner")}}/banner0.jpg" alt=""></a></div>
     </div>
     <div class="ps-section--sale-off ps-section pt-80 pb-40">
         <div class="ps-container">

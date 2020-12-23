@@ -28,7 +28,7 @@
                     </div>
                 @endif
                 <div class="col-lg-12">
-                    {!! Form::open(array('route' => 'employee.update','method'=>'POST', 'id'=>'form-validation', 'name'=>'form-validation', 'enctype'=>'multipart/form-data')) !!}
+                    {!! Form::open(array('route' => 'employee.update','method'=>'POST',"autocomplete"=>"off", 'id'=>'form-validation', 'name'=>'form-validation', 'enctype'=>'multipart/form-data')) !!}
                     <input value="{{$nhanvien->nhan_vien_id}}" class="form-control"    name="nhan_vien_id"  type="text" hidden>
                     <div class="row">
                         <div class="col-lg-6">

@@ -97,8 +97,8 @@
                                    aria-expanded="true">{{ Session::get('username')}}<i
                                         class="fa fa-angle-down"></i></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">Thông tin tài khoản</a></li>
-                                    <li><a href="#">Lịch hẹn</a></li>
+                                    <li><a href="{{route("customer.updateInfo")}}">Thông tin tài khoản</a></li>
+                                    <li><a href="{{route("customer.bookingHistory","false")}}">Lịch hẹn</a></li>
                                     <li><a href="#">Lịch sử</a></li>
                                     <li><a href="{{route("customer.logout")}}">Đăng xuất</a></li>
                                 </ul>
@@ -163,7 +163,7 @@
                     <div class="ps-cart" id="ps-cart">
                         <a class="ps-cart__toggle" href="#"><span><i>0</i></span><i
                                 class="ps-icon-shopping-cart"></i></a>
-                        <div class="ps-cart__listing">
+{{--                        <div class="ps-cart__listing">--}}
 {{--                            <div class="ps-cart__content">--}}
 {{--                                <div class="ps-cart-item">--}}
 {{--                                    <a class="ps-cart-item__close" href="#"></a>--}}
@@ -203,7 +203,7 @@
 {{--                                        class="ps-icon-arrow-left"></i>--}}
 {{--                                </a>--}}
 {{--                            </div>--}}
-                        </div>
+{{--                        </div>--}}
                     </div>
                     <div class="menu-toggle"><span></span></div>
                 </div>
@@ -305,6 +305,10 @@
     .ps-cart-item__content p span {
     color:white;
     }
+    .title-cart{
+        font-size: 14px !important;
+        color:white !important;
+    }
 </style>
 <script>
       function showDropdown(el){
@@ -341,7 +345,7 @@
                 '                                        <a href="#"></a>\n' +
                 '                                        <img src="'+el.urlImg+'" alt=""></div>\n' +
                 '                                    <div class="ps-cart-item__content">\n' +
-                '                                        <a class="ps-cart-item__title" href="{{url("front-end.service.load")}}/'+el.serviceID+'">'+el.name+'</a>\n' +
+                '                                        <a class="ps-cart-item__title" href="{{url("service/")}}/'+el.serviceID+'">'+el.name+'</a>\n' +
                 '                                        <p>\n' +
                 '                                            <span>Thời gian:<i>'+el.time+' phút</i></span>\n' +
                 '                                            <span>Giá:<i>'+el.price+' VND</i></span>\n' +
@@ -353,14 +357,16 @@
           str+="</div>";
         if(time != undefined && time>0){
             str+='     <div class="ps-cart__total">\n' +
-                '                                <p>Số dịch vụ<span>'+data.length+'</span></p>\n' +
-                '                                <p>Tổng thời gian :<span>'+Number(time)+' phút</span></p>\n' +
-                '                                <p>Tổng tiền :<span> '+Number(price)+' vnd</span></p>\n' +
+                '                                <p class="title-cart">Số dịch vụ<span>'+data.length+'</span></p>\n' +
+                '                                <p class="title-cart">Tổng thời gian :<span>'+Number(time)+' phút</span></p>\n' +
+                '                                <p class="title-cart">Tổng tiền :<span> '+Number(price)+' vnd</span></p>\n' +
                 '                            </div>';
         }
-
+        str+='     <div class="ps-cart__footer"><a class="ps-btn" href="{{url("booking")}}">Đặt lịch<i\n' +
+            '                                        class="ps-icon-arrow-left"></i></a></div>'
         str+="</div>";
-          return redenderNumberCart(data.length)+str;
+        if(data.length == 0) {return redenderNumberCart(data.length);}
+                 return redenderNumberCart(data.length)+str;
 
     }
 

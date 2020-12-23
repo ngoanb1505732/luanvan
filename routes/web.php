@@ -24,6 +24,12 @@ Route::group(['namespace' => 'Frontend'], function () {
         Route::get('/login', 'CustomerController@login')->name("customer.login");
         Route::get('/logout', 'CustomerController@logout')->name("customer.logout");
         Route::post('/login', 'CustomerController@loginAction')->name("customer.loginAction");
+        Route::get('/bookingHistory/{clearCart}', 'CustomerController@bookingHistory')->name("customer.bookingHistory");
+        Route::get('/updateInfo', 'CustomerController@updateInfo')->name("customer.updateInfo");
+        Route::post('/updateInfoAction', 'CustomerController@updateInfoAction')->name("customer.updateInfoAction");
+
+        Route::post('/updatePassword', 'CustomerController@updatePassword')->name("customer.updatePassword");
+
 
     });
 
@@ -33,6 +39,11 @@ Route::group(['namespace' => 'Frontend'], function () {
     });
     Route::group(['namespace' => 'Service'], function () {
         Route::get('/service/{id}', 'ServiceController@load')->name("front-end.service.load");
+    });
+    Route::group(['namespace' => 'Booking','prefix'=>'booking'], function () {
+        Route::get('/', 'BookingController@load')->name("front-end.booking.load");
+        Route::post('/booking', 'BookingController@booking')->name("front-end.booking.booking");
+
     });
 });
 

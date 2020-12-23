@@ -7,10 +7,14 @@ namespace App\Http\Controllers\Frontend\Customer;
 use App\Http\Controllers\Controller;
 use App\Models\KhachHang;
 use App\Models\LoaiDichVu;
+use App\Models\PhieuDatCho;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Frontend\Helpper;
 
 class CustomerController extends Controller
 {
+
+
     public function register() {
         $typeServices = LoaiDichVu::all();
         return view('/frontend/customer/register',  compact(["typeServices"]));
@@ -53,5 +57,49 @@ class CustomerController extends Controller
         $request->session()->forget('username');
         $typeServices = LoaiDichVu::all();
         return redirect()->route('customer.login')->with('success', 'Đăng xuất thành công');
+    }
+
+
+    public function bookingHistory(Request $request,$clearCart) {
+        $customerID =  $request->session()->get('customerID');
+        if($customerID ==null){
+            return redirect()->route('customer.login')->with("error","Bạn cần đăng nhập để xem thông tin");
+        }
+        $typeServices = LoaiDichVu::all();
+        $bookings = PhieuDatCho::where("khach_hang_id","=",$customerID)
+            ->orderByDesc("ngay_lam")->paginate(5);
+        $boolean = $clearCart =="true";
+        return view('/frontend/customer/bookingHistory',  compact(["typeServices","bookings","boolean"]));
+    }
+
+    public function updateInfo(Request $request) {
+        $typeServices = LoaiDichVu::all();
+        $customerID =  $request->session()->get('customerID');
+        $customer = KhachHang::find($customerID);
+        return view('/frontend/customer/updateInfo',  compact(["typeServices","customer"]));
+    }
+
+    public function updateInfoAction(Request $request) {
+           $customerID =  $request->session()->get('customerID');
+        $customer = KhachHang::find($customerID);
+        $customer->ho_ten = $request->ho_ten;
+        $customer->sdt = $request->sdt;
+        $customer->dia_chi = $request->dia_chi;
+        $customer->ngay_sinh = $request->ngay_sinh;
+        $customer->save();
+        return redirect()->route('customer.updateInfo')->with('success', 'Cập nhật thành công');
+    }
+
+
+    public function updatePassword(Request $request) {
+        $customerID =  $request->session()->get('customerID');
+        $customer = KhachHang::find($customerID);
+        if($customer->password != $request->password_current){
+            return redirect()->route('customer.updateInfo')->with('error', 'Nhập sai mật khẩu');
+
+        }
+        $customer->password = $request->password_new;
+        $customer->save();
+        return redirect()->route('customer.updateInfo')->with('success', 'Cập nhật thành công');
     }
 }

@@ -28,7 +28,7 @@
                     </div>
                 @endif
                 <div class="col-lg-12">
-                    {!! Form::open(array('route' => 'employee.save','method'=>'POST', 'id'=>'form-validation', 'name'=>'form-validation', 'enctype'=>'multipart/form-data')) !!}
+                    {!! Form::open(array('route' => 'employee.save','method'=>'POST', 'id'=>'form-validation',"autocomplete"=>"off" ,'name'=>'form-validation', 'enctype'=>'multipart/form-data')) !!}
 
                     <div class="row">
                         <div class="col-lg-6">
