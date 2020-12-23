@@ -252,7 +252,7 @@
                 return;
             }
             $.ajax({
-                url: "http://localhost/luanvan/public/api",
+                url: "{{url("/")}}/api",
                 data: {
                     "action": "getScheduleByEmployee",
                     "employeeID": employeeId,
