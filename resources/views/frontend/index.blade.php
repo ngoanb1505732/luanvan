@@ -5,11 +5,11 @@
 
 
 @section("main")
-    <div class="ps-banner" style="overflow: visible;margin-left: 25%;width: 50%;">
+    <div class="ps-banner" style="overflow: visible;margin-left: 5%;width: 90%;">
     <div class="w3-content w3-display-container">
-        <img class="mySlides" src="{{url("/")}}/frontend/banner/banner1.png" style="display:block;width:100%">
-        <img class="mySlides" src="{{url("/")}}/frontend/banner/banner2.png" style="width:100%">
-        <img class="mySlides" src="{{url("/")}}/frontend/banner/banner0.jpg" style="width:100%">
+        <img class="mySlides" src="{{url("/")}}/frontend/banner/banner1.jpg" style="display:block;width:100%">
+        <img class="mySlides" src="{{url("/")}}/frontend/banner/banner2.jpg" style="width:100%">
+        <img class="mySlides" src="{{url("/")}}/frontend/banner/banner5.jpg" style="width:100%">
         <div  style="text-align:center;margin-top: 15px;">
             <span class="dot" onclick="currentDiv(1)"></span>
              <span class="dot" onclick="currentDiv(2)"></span>
@@ -80,8 +80,8 @@
         </div>
     </div>
     <div class="ps-section--offer">
-        <div class="ps-column"><a class="ps-offer" href="product-listing.html"><img src="{{url("frontend/banner")}}/banner1.jpg" alt=""></a></div>
-        <div class="ps-column"><a class="ps-offer" href="product-listing.html"><img src="{{url("frontend/banner")}}/banner0.jpg" alt=""></a></div>
+        <div class="ps-column"><a class="ps-offer" href="product-listing.html"><img src="{{url("frontend/banner")}}/banner4.jpg" alt=""></a></div>
+        <div class="ps-column"><a class="ps-offer" href="product-listing.html"><img src="{{url("frontend/banner")}}/banner5.jpg" alt=""></a></div>
     </div>
     <div class="ps-section--sale-off ps-section pt-80 pb-40">
         <div class="ps-container">
@@ -186,6 +186,10 @@
     }
     .text-danger{
         font-size: 14px;
+    }
+    .ps-column img{
+        width:100%;
+        height: 300px;
     }
 </style>
 
