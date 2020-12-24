@@ -191,6 +191,14 @@
         width:100%;
         height: 300px;
     }
+	
+	.ps-shoe .ps-shoe__thumbnail img{
+height: 150px;
+widht:200px;
+}
+.grid-item__content-wrapper{
+margin-top: 60px
+}
 </style>
 
 <script>
