@@ -1,4 +1,4 @@
-@section('title', 'Quản Lý Loại Dịch vụ')
+@section('title', 'Quản lý hoá đơn')
 @include('main')
 @include('components/mainmenu')
 @include('components/breadcrumb')
@@ -8,11 +8,9 @@
     <section class="card">
         <div class="card-header">
             <div class="dropdown pull-right">
-                <a href="{{ route("typeService.create")}}" class="btn btn-success "><i class="fa fa-plus"></i>&nbsp; &nbsp;
-                    Thêm Loại Dịch Vụ &nbsp; &nbsp;</a>
             </div>
             <span class="cat__core__title">
-            <strong>Danh Sách Loại Dịch Vụ</strong>
+            <strong>Danh sách hoá đơn</strong>
         </span>
         </div>
 
@@ -23,7 +21,7 @@
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <strong>{{ $message }} !</strong>
+                    <strong>Đã xảy ra lỗi </strong> {{ $message }} !
                 </div>
             @endif
             @if ($message = Session::get('success'))
@@ -31,37 +29,34 @@
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <strong>Cập nhật thành công </strong> {{ $message }}!
+                    <strong>{{ $message }}!</strong>
                 </div>
             @endif
             <table class="table table-hover nowrap" id="example1" width="100%">
                 <thead class="thead-default">
                 <tr>
                     <th>ID</th>
-                    <th>Tên Loại Dịch Vụ</th>
-                    <th>Diễn giải</th>
-                    <th>Hành Động</th>
+                    <th>Khách hàng</th>
+                    <th>Nhân viên</th>
+                    <th>Ngày tạo</th>
+                <th>Hành động</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($typeServices as $typeService)
+                @foreach($orders as $order)
                     <tr>
-                        <th>{{$typeService["loai_dich_vu_id"]}}</th>
-                        <th>{{$typeService["ten_loai_dich_vu"]}}</th>
-                        <th class="text">{!!$typeService["dien_giai"]!!}</th>
-                        <th>
+                        <th>{{$order["hoa_don_id"]}}</th>
+                        <th>{{$order->khachHang->ho_ten}}</th>
+                        <th>{{$order->nhanVien->ho_ten}}</th>
+                        <th>{{$order["created_at"]}}</th>
+                    <th>
                             <div class="dropdown d-inline-block">
-                                <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"
-                                        aria-expanded="false">
+                                <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                     Hành Động
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="" role="menu">
-                                    <a class="dropdown-item"
-                                       href="<?php echo route("typeService.edit", $typeService["loai_dich_vu_id"]); ?>"> &nbsp;
-                                        <i class="fa fa-pencil" aria-hidden="true"></i> &nbsp; Sửa</a>
-                                    <a class="dropdown-item" onclick="return confirm('Bạn chắc chắn muốn xóa');"
-                                       href="<?php echo route("typeService.delete", $typeService["loai_dich_vu_id"]); ?>">
-                                        &nbsp; <i class="fa fa-trash" aria-hidden="true"></i> &nbsp; Xoá</a>
+                                    <a class="dropdown-item" href="{{route("admin.order.detail",$order["hoa_don_id"])}}"> &nbsp; <i class="fa fa-pencil" aria-hidden="true"></i> &nbsp;  Chi tiết</a>
+                                    <a class="dropdown-item" onclick="return confirm('Bạn chắc chắn muốn xóa');" href="{{route("admin.order.delete",$order["hoa_don_id"])}}"> &nbsp; <i class="fa fa-trash" aria-hidden="true"></i> &nbsp; Xoá</a>
                                 </ul>
                             </div>
                         </th>
@@ -81,7 +76,7 @@
 
             // Datatables
             $('#example1').DataTable({
-                "lengthMenu": [[10, 25, 50, 100, 200, -1], [10, 25, 50, 100, 200, "All"]],
+                "lengthMenu": [[10, 25, 50, 100, 200, -1], [10, 25,50, 100, 200, "All"]],
                 responsive: true,
                 "autoWidth": false
             });
@@ -94,13 +89,6 @@
         .icon {
             width: 80px;
             height: 80px;
-        }
-        .text {
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 2; /* number of lines to show */
-            -webkit-box-orient: vertical;
         }
     </style>
 @include('components/footer')

@@ -11,8 +11,9 @@ class PhieuDatCho extends Model
     use \Illuminate\Database\Eloquent\Factories\HasFactory;
     public static $STATUS = array(
         "Xác nhận" => "Xác nhận",
+        "Hoàn tất" => "Hoàn tất",
         "Huỷ" => "Huỷ",
-        "Chờ duyêt" => "Chờ duyêt"
+        "Chờ duyệt" => "Chờ duyệt"
     );
     protected $table = 'phieu_dat_cho';
     protected $primaryKey = 'phieu_dat_cho_id';
@@ -41,6 +42,11 @@ class PhieuDatCho extends Model
     public function datHen()
     {
         return $this->hasMany('App\Models\DatHen', 'phieu_dat_cho_id');
+    }
+
+    public function hoaDon()
+    {
+        return $this->hasMany('App\Models\HoaDon', 'phieu_dat_cho_id');
     }
 
 }

@@ -44,7 +44,7 @@ Cập nhật thông tin tài khoản
                                         <a class="nav-link " href="{{route("customer.bookingHistory","false")}}">Lịch hẹn</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">Lịch sử</a>
+                                        <a class="nav-link" href="{{route("customer.historyOrder")}}">Hoá đơn</a>
                                     </li>
                                 </ul>
                             </div>

@@ -36,7 +36,8 @@ class BookingController extends Controller
         foreach ($arr as $item){
             $datHen = new DatHen();
             $datHen->phieu_dat_cho_id = $phieuDatCho->phieu_dat_cho_id;
-            $datHen->dich_vu_id = $datHen->dich_vu_id;
+            $datHen->dich_vu_id = $item;
+            $datHen->save();
         }
         return redirect()->route('customer.bookingHistory',"true")->with('success', 'Đặt lịch thành công');
     }

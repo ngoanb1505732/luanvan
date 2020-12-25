@@ -99,7 +99,7 @@
                                 <ul class="dropdown-menu">
                                     <li><a href="{{route("customer.updateInfo")}}">Thông tin tài khoản</a></li>
                                     <li><a href="{{route("customer.bookingHistory","false")}}">Lịch hẹn</a></li>
-                                    <li><a href="#">Lịch sử</a></li>
+                                    <li><a href="{{route("customer.historyOrder")}}">Hoá đơn</a></li>
                                     <li><a href="{{route("customer.logout")}}">Đăng xuất</a></li>
                                 </ul>
                             </div>
@@ -116,7 +116,7 @@
         <nav class="navigation">
             <div class="container-fluid">
                 <div class="navigation__column left">
-                    <div class="header__logo"><a class="ps-logo" href="{{url("/")}}"><img style="height: 125px"
+                    <div class="header__logo"><a class="ps-logo" href="{{url("/")}}"><img style="height: 200px"
                                                                                           src="{{url("/frontend")}}/images/logo.jpg"
                                                                                           alt=""></a></div>
                 </div>
@@ -308,6 +308,12 @@
     .title-cart{
         font-size: 14px !important;
         color:white !important;
+    }
+    .header .ps-logo{
+        max-width: 250px;
+    }
+    .menu > li > a{
+        font-size: 18px;
     }
 </style>
 <script>

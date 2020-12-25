@@ -25,7 +25,11 @@ Route::group(['namespace' => 'Frontend'], function () {
         Route::get('/logout', 'CustomerController@logout')->name("customer.logout");
         Route::post('/login', 'CustomerController@loginAction')->name("customer.loginAction");
         Route::get('/bookingHistory/{clearCart}', 'CustomerController@bookingHistory')->name("customer.bookingHistory");
+        Route::get('/bookingHistoryDetail/{id}', 'CustomerController@bookingHistoryDetail')->name("customer.bookingHistoryDetail");
+
         Route::get('/updateInfo', 'CustomerController@updateInfo')->name("customer.updateInfo");
+        Route::get('/historyOrder', 'CustomerController@historyOrder')->name("customer.historyOrder");
+        Route::get('/historyOrderDetail/{id}', 'CustomerController@historyOrderDetail')->name("customer.historyOrderDetail");
         Route::post('/updateInfoAction', 'CustomerController@updateInfoAction')->name("customer.updateInfoAction");
 
         Route::post('/updatePassword', 'CustomerController@updatePassword')->name("customer.updatePassword");
@@ -109,6 +113,27 @@ Route::group(['middleware' => 'auth','prefix'=>'admin','namespace' => 'Adminhtml
         Route::get('/delete/{id}', 'ProcessController@delete')->name('process.delete');
         Route::get('/edit/{id}', 'ProcessController@edit')->name('process.edit');
         Route::post('/update', 'ProcessController@update')->name('process.update');
+
+    });
+
+    Route::group(['namespace' => 'Booking','prefix'=>'booking'], function()
+    {
+        Route::get('/', 'BookingController@index')->name("admin.booking");
+        Route::get('/delete/{id}', 'BookingController@delete')->name('admin.booking.delete');
+        Route::get('/detail/{id}', 'BookingController@detail')->name('admin.booking.detail');
+        Route::get('/changeStatus', 'BookingController@changeStatus')->name('admin.booking.changeStatus');
+
+
+    });
+
+
+
+    Route::group(['namespace' => 'Order','prefix'=>'order'], function()
+    {
+        Route::get('/', 'OrderController@index')->name("admin.order");
+        Route::get('/delete/{id}', 'OrderController@delete')->name('admin.order.delete');
+        Route::get('/detail/{id}', 'OrderController@detail')->name('admin.order.detail');
+
 
     });
 

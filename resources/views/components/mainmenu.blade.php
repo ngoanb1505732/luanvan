@@ -46,12 +46,6 @@
                         </a>
                     </li>
 
-                    <li class="cat__menu-left__item">
-                        <a href="{{ url('pages')}}">
-                            <span class="cat__menu-left__icon icmn-calendar"></span>
-                            Lịch
-                        </a>
-                    </li>
                 </ul>
             </li>
             <li class="cat__menu-left__item cat__menu-left__submenu">
@@ -61,7 +55,13 @@
                 </a>
                 <ul class="cat__menu-left__list">
                     <li class="cat__menu-left__item">
-                        <a href="#">
+                        <a href="{{ route('admin.booking')}}">
+                            <span class="cat__menu-left__icon icmn-calendar"></span>
+                            Lịch Hẹn
+                        </a>
+                    </li>
+                    <li class="cat__menu-left__item">
+                        <a href="{{ route('admin.order')}}">
                             <span class="cat__menu-left__icon icmn-cart"></span>
                            Đơn hàng
                         </a>

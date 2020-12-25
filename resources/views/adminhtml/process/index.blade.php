@@ -31,7 +31,7 @@
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <strong>Cập nhật thành công </strong> {{ $message }}!
+                    <strong> {{ $message }}! </strong>
                 </div>
             @endif
             <table class="table table-hover nowrap" id="example1" width="100%">

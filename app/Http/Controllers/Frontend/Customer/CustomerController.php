@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\KhachHang;
 use App\Models\LoaiDichVu;
 use App\Models\PhieuDatCho;
+use App\Models\HoaDon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Frontend\Helpper;
 
@@ -102,4 +103,31 @@ class CustomerController extends Controller
         $customer->save();
         return redirect()->route('customer.updateInfo')->with('success', 'Cập nhật thành công');
     }
+
+
+    public function bookingHistoryDetail(Request $request,$id){
+        $typeServices = LoaiDichVu::all();
+        $customerID =  $request->session()->get('customerID');
+        $booking =  PhieuDatCho::where("khach_hang_id","=",$customerID)
+            ->where("phieu_dat_cho_id",$id)->first();
+        return view('/frontend/customer/historyBookingDetail',  compact(["typeServices","booking"]));
+
+    }
+
+    public function historyOrder(Request  $request){
+        $typeServices = LoaiDichVu::all();
+        $customerID =  $request->session()->get('customerID');
+         $orders = HoaDon::where("khach_hang_id","=",$customerID)->paginate(5);
+        return view('/frontend/customer/historyOrder',  compact(["typeServices","orders"]));
+
+    }
+
+    public function historyOrderDetail(Request $request,$id){
+        $typeServices = LoaiDichVu::all();
+        $customerID =  $request->session()->get('customerID');
+        $order = HoaDon::find($id);
+        return view('/frontend/customer/historyOrderDetail',  compact(["typeServices","order"]));
+
+    }
+
 }
