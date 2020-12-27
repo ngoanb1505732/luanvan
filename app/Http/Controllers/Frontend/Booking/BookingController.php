@@ -26,7 +26,7 @@ class BookingController extends Controller
         }
         $customerID = $request->session()->get('customerID');
         $phieuDatCho = new PhieuDatCho();
-        $phieuDatCho->trang_thai = \App\Models\PhieuDatCho::$STATUS["Chờ duyêt"];
+        $phieuDatCho->trang_thai = \App\Models\PhieuDatCho::$STATUS["Chờ duyệt"];
         $phieuDatCho->khach_hang_id = $customerID;
         $phieuDatCho->nhan_vien_id = $request->employeeID;
         $phieuDatCho->ngay_lam = $request->dateBooking;
