@@ -49,6 +49,11 @@ Route::group(['namespace' => 'Frontend'], function () {
         Route::post('/booking', 'BookingController@booking')->name("front-end.booking.booking");
 
     });
+
+
+    Route::group(['namespace' => 'Rate','prefix'=>'rate'], function () {
+        Route::post('/', 'RateController@CreateRate')->name("front-end.rate.create");
+    });
 });
 
 Route::group(['middleware' => 'auth','prefix'=>'admin','namespace' => 'Adminhtml'], function () {
@@ -135,6 +140,15 @@ Route::group(['middleware' => 'auth','prefix'=>'admin','namespace' => 'Adminhtml
         Route::get('/detail/{id}', 'OrderController@detail')->name('admin.order.detail');
 
 
+    });
+
+    Route::group(['namespace' => 'Rate','prefix'=>'rate'], function()
+    {
+        Route::get('/', 'RateController@index')->name("admin.rate");
+        Route::get('/delete/{id}', 'RateController@delete')->name('admin.rate.delete');
+        Route::get('/detail/{id}', 'RateController@detail')->name('admin.rate.detail');
+        Route::get('/complete/{id}', 'RateController@complete')->name('admin.rate.complete');
+        Route::get('/cancel/{id}', 'RateController@cancel')->name('admin.rate.cancel');
     });
 
     Route::get('/login', function () {

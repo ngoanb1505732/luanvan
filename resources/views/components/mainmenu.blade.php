@@ -46,6 +46,13 @@
                         </a>
                     </li>
 
+                    <li class="cat__menu-left__item">
+                        <a href="{{ route("admin.rate")}}">
+                            <span class="cat__menu-left__icon icmn-file-text2"></span>
+              Đánh giá
+                        </a>
+                    </li>
+
                 </ul>
             </li>
             <li class="cat__menu-left__item cat__menu-left__submenu">

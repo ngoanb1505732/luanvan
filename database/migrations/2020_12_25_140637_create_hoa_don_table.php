@@ -23,6 +23,17 @@ class CreateHoaDonTable extends Migration
                 ->references('phieu_dat_cho_id')->on('phieu_dat_cho')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
+
+            $table->foreign('khach_hang_id')
+                ->references('khach_hang_id')->on('khach_hang')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+
+
+            $table->foreign('nhan_vien_id')
+                ->references('nhan_vien_id')->on('nhan_vien')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
             $table->timestamps();
         });
     }

@@ -43,4 +43,10 @@ class DichVu extends Model
         return $this->belongsTo('App\Models\LieuTrinh', 'lieu_trinh_id');
 
     }
+
+    public function danhGia()
+    {
+        return $this->hasMany('App\Models\DanhGia','dich_vu_id')
+            ->where("trang_thai","=","Xác nhận");
+    }
 }

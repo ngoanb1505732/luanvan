@@ -23,6 +23,11 @@
                                          src="{{url("/")}}/{{$anh->duong_dan}}" alt="">
                                 </div>
                             @endforeach
+
+                                <div>
+                                    <img onclick="chooseImge(this)" class="img-thumbnail-custom zoom-in"
+                                         src="{{url("/")}}/{{$item->anh_dai_dien}}" alt="">
+                                </div>
                         </div>
 
                         <div class="col-lg-4 col-md-12 ">
@@ -113,49 +118,88 @@
                         {!!  $item->mo_ta!!}
                     </div>
                     <div class="tab-pane active" role="tabpanel" id="tab_02">
-                        <div class="ps-review">
-                            <div class="ps-review__content">
+
+{{--                                <header>--}}
+{{--                                    <div class="br-wrapper br-theme-fontawesome-stars">--}}
+{{--                                        <div class="br-widget"><a href="#" data-rating-value="1"--}}
+{{--                                                                  data-rating-text="1"--}}
+{{--                                                                  class="br-selected br-current"></a><a href="#"--}}
+{{--                                                                                                        data-rating-value="1"--}}
+{{--                                                                                                        data-rating-text="2"--}}
+{{--                                                                                                        class="br-selected br-current"></a><a--}}
+{{--                                                href="#" data-rating-value="1" data-rating-text="3"--}}
+{{--                                                class="br-selected br-current"></a><a href="#" data-rating-value="1"--}}
+{{--                                                                                      data-rating-text="4"--}}
+{{--                                                                                      class="br-selected br-current"></a><a--}}
+{{--                                                href="#" data-rating-value="5" data-rating-text="5"></a>--}}
+{{--                                            <div class="br-current-rating">1</div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <p>Bởi<a href=""> ABC</a> - November 25, 2017</p>--}}
+{{--                                </header>--}}
+
+
+@foreach($item->danhGia as $danhGia)
+                            <div class="ps-review">
+                                <div class="ps-review__content">
                                 <header>
                                     <div class="br-wrapper br-theme-fontawesome-stars">
-                                        <div class="br-widget"><a href="#" data-rating-value="1"
-                                                                  data-rating-text="1"
-                                                                  class="br-selected br-current"></a><a href="#"
-                                                                                                        data-rating-value="1"
-                                                                                                        data-rating-text="2"
-                                                                                                        class="br-selected br-current"></a><a
-                                                href="#" data-rating-value="1" data-rating-text="3"
-                                                class="br-selected br-current"></a><a href="#" data-rating-value="1"
-                                                                                      data-rating-text="4"
-                                                                                      class="br-selected br-current"></a><a
-                                                href="#" data-rating-value="5" data-rating-text="5"></a>
-                                            <div class="br-current-rating">1</div>
+                                        <div class="br-widget">
+                                         {!!  $star[$danhGia->diem-1]!!}
                                         </div>
                                     </div>
-                                    <p>Bởi<a href=""> ABC</a> - November 25, 2017</p>
+                                    <p>Bởi<a href="#"> {{$danhGia->khachHang->ho_ten}}</a> - {{$danhGia->created_at}}</p>
                                 </header>
-                                <p>Đánh giá dịch vụ ở đây</p>
+
+
+
+                                <p>{{$danhGia->noi_dung}}</p>
                             </div>
                         </div>
-                        <form class="ps-product__review" action="_action" method="post">
+                        @endforeach
+                            {!! Form::open(array('route' => 'front-end.rate.create','method'=>'POST',
+                                'id'=>'form-validation',"autocomplete"=>"off" ,
+                                'name'=>'form-validation', 'enctype'=>'multipart/form-data',
+                                'class'=>"ps-product__review")) !!}
+
+                        @if ($message = Session::get('error'))
+                            <div class="alert alert-danger" role="alert" id="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <strong>Đã xảy ra lỗi </strong> {{ $message }} !
+                            </div>
+                        @endif
+                        @if ($message = Session::get('success'))
+                            <div class="alert alert-success" role="alert" id="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <strong>{{ $message }}!</strong>
+                            </div>
+                        @endif
+
                             <h4>Thêm đánh giá</h4>
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
                                     <div class="form-group">
-                                        <label>Your rating<span></span></label>
-                                        <div class="br-wrapper br-theme-fontawesome-stars"><select class="ps-rating"
-                                                                                                   style="display: none;">
+                                        <label>Điểm đánh giá<span></span></label>
+                                        <div class="br-wrapper br-theme-fontawesome-stars">
+                                            <select class="ps-rating" id="start"
+                                            style="display: none;" name="diem">
                                                 <option value="1">1</option>
-                                                <option value="1">2</option>
-                                                <option value="1">3</option>
-                                                <option value="1">4</option>
-                                                <option value="5">5</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5" selected>5</option>
                                             </select>
                                         </div>
                                     </div>
+                                    <input type="text" name="dich_vu_id" value="{{$item->dich_vu_id}}" hidden>
                                     <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12 ">
                                         <div class="form-group">
                                             <label>Đánh giá:</label>
-                                            <textarea class="form-control" rows="6"></textarea>
+                                            <textarea name ="noi_dung" class="form-control" rows="6" required></textarea>
                                         </div>
                                         <div class="form-group">
                                             <button class="ps-btn ps-btn--sm">Submit<i class="ps-icon-next"></i>
@@ -278,5 +322,8 @@
 
     .zoom-in {
         cursor: zoom-in;
+    }
+   #alert{
+        width: 500px;
     }
 </style>
