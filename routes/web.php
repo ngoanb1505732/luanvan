@@ -37,8 +37,21 @@ Route::group(['namespace' => 'Frontend'], function () {
 
     });
 
+    Route::group(['namespace' => 'Employee','prefix'=>'employee'], function () {
+        Route::get('/login', 'EmployeeController@login')->name("employee.login");
+        Route::post('/login', 'EmployeeController@loginAction')->name("employee.loginAction");
+        Route::get('/logout', 'EmployeeController@logout')->name("employee.logout");
+        Route::post('/updateInfo', 'EmployeeController@updateInfoAction')->name("employee.updateInfoAction");
+        Route::get('/updateInfo', 'EmployeeController@updateInfo')->name("employee.updateInfo");
+        Route::get('/schedule', 'EmployeeController@schedule')->name("employee.front-end.schedule");
+        Route::get('/updatePassword', 'EmployeeController@updatePassword')->name("employee.updatePassword");
+        Route::post('/updatePasswordAction', 'EmployeeController@updatePasswordAction')->name("employee.updatePasswordAction");
 
-    Route::group(['namespace' => 'TypeService'], function () {
+
+    });
+
+
+        Route::group(['namespace' => 'TypeService'], function () {
         Route::get('/typeservice/{id}', 'TypeServiceController@load')->name("front-end.typeService.load");
     });
     Route::group(['namespace' => 'Service'], function () {
