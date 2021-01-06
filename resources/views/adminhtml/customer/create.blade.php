@@ -114,7 +114,7 @@
 
         function validateUsername(){
             let username = document.getElementById("username");
-            $.ajax({url: "http://localhost/luanvan/public/api",
+            $.ajax({url: "{{url("/")}}/api",
                 data:{"action":"checkCustomerExist","username":username.value},
                 method:"POST",
                 success: function(result){

@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use App\Http\Controllers\Controller;
 use App\Models\NhanVien;
+use App\Models\PhieuDatCho;
 use Illuminate\Http\Request;
 class EmployeeController extends Controller
 {
@@ -111,8 +112,35 @@ catch(Exception $e){
             }
         }
     public function schedule(){
-        return view('/adminhtml/employee/schedule');
+        $employees = NhanVien::all();
+        $day = date("Y-m-d")."";
+//        $bookingDates = PhieuDatCho::all()->where("trang_thai","=","Xác nhận")
+//            ->where("ngay_lam",">=",$day." 00:00:00")
+//            ->where("ngay_lam","<=",$day." 23:59:59")
+//        ;
+        $bookingDates = PhieuDatCho::all()->where("trang_thai","=","Xác nhận");
+        $schedule= "";
+        foreach ($bookingDates as $item){
+            $endDate= strtotime($item->ngay_lam.'+ '.$item->thoi_gian_lam.' minute');
+            $endDate = date('Y-m-d H:i:s',$endDate);
+           // $endDate = $endDate->format('Y-m-d H:i:s');
+            $text="";
+            $dichVu = "";
+            foreach ($item->datHen as $datHen){
+                $dichVu = (($dichVu =="")? $dichVu .$datHen->dichVu->ten_dich_vu : $dichVu." ; " .$datHen->dichVu->ten_dich_vu );
+            }
+
+            $text="#".$item->phieu_dat_cho_id;
+            $schedule=$schedule."{start_date:'".$item->ngay_lam
+                . "',end_date:'".$endDate
+                ."',section_id:".$item->nhan_vien_id
+                .",text:'".$text."',id:".$item->phieu_dat_cho_id
+                .",nhan_vien:'".$item->nhanVien->ho_ten
+                ."',ngay_lam:'".$item->ngay_lam."',".
+                "khach_hang:'".$item->khachHang->ho_ten."',".
+                "dich_vu:'".$dichVu."'"
+                ."},";
+        }
+        return view('/adminhtml/booking/schedule',  compact(["employees","bookingDates","schedule"]));
     }
-
-
 }

@@ -67,6 +67,13 @@
                             Lịch Hẹn
                         </a>
                     </li>
+
+                    <li class="cat__menu-left__item">
+                        <a href="{{ route('employee.schedule')}}">
+                            <span class="cat__menu-left__icon icmn-calendar"></span>
+                            Lịch Làm Của Nhân Viên
+                        </a>
+                    </li>
                     <li class="cat__menu-left__item">
                         <a href="{{ route('admin.order')}}">
                             <span class="cat__menu-left__icon icmn-cart"></span>

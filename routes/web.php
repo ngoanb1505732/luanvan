@@ -127,6 +127,7 @@ Route::group(['middleware' => 'auth','prefix'=>'admin','namespace' => 'Adminhtml
         Route::get('/delete/{id}', 'BookingController@delete')->name('admin.booking.delete');
         Route::get('/detail/{id}', 'BookingController@detail')->name('admin.booking.detail');
         Route::get('/changeStatus', 'BookingController@changeStatus')->name('admin.booking.changeStatus');
+        Route::get('/schedule', 'BookingController@schedule')->name('admin.booking.schedule');
 
 
     });
