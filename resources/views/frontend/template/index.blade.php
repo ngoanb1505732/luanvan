@@ -151,8 +151,8 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="menu-item"><a href="#">Khuyến mãi</a></li>
-                        <li class="menu-item"><a href="#">Liên hệ</a></li>
+                        <li class="menu-item"><a href="{{route("employee.login")}}">Dành cho nhân viên</a></li>
+{{--                        <li class="menu-item"><a href="#">Liên hệ</a></li>--}}
                     </ul>
                 </div>
                 <div class="navigation__column right">

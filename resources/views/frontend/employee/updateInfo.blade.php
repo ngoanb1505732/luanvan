@@ -62,7 +62,7 @@
             <a class="navbar-brand" href="#">Duyên Spa</a>
         </div>
         <ul class="nav navbar-nav">
-            <li class="active"><a href="{{route("employee.updateInfo")}}">Thông tin tài khoản</a></li>
+            <li class="active"><a href="#">Thông tin tài khoản</a></li>
             <li><a href="{{route("employee.updatePassword")}}">Đổi mật khẩu</a></li>
             <li><a href="{{route("employee.front-end.schedule")}}">Lịch làm việc</a></li>
         </ul>

@@ -76,7 +76,7 @@
         <ul class="nav navbar-nav">
             <li><a href="{{route("employee.updateInfo")}}">Thông tin tài khoản</a></li>
             <li><a href="{{route("employee.updatePassword")}}">Đổi mật khẩu</a></li>
-            <li  class="active"><a href="{{route("employee.front-end.schedule")}}">Lịch làm việc</a></li>
+            <li  class="active"><a href="#">Lịch làm việc</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <li><a href="{{route("employee.logout")}}"><span class="glyphicon glyphicon-log-in"></span> Đăng xuất</a></li>
