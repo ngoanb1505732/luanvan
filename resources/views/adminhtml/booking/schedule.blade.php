@@ -181,7 +181,17 @@
             display: none !important;
         }
 
+.dhx_cal_prev_button{
+    background-image: url("{{url("/")}}/images/arrow_left.png");
+    width: 32px;
+    height: 32px;
+}
 
+        .dhx_cal_next_button{
+            background-image: url("{{url("/")}}/images/arrow_right.png");
+            width: 32px;
+            height: 32px;
+        }
 
 
         table, td, th {

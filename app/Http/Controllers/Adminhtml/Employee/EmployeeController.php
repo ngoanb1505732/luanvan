@@ -118,7 +118,7 @@ catch(Exception $e){
 //            ->where("ngay_lam",">=",$day." 00:00:00")
 //            ->where("ngay_lam","<=",$day." 23:59:59")
 //        ;
-        $bookingDates = PhieuDatCho::all()->where("trang_thai","=","Xác nhận");
+        $bookingDates = PhieuDatCho::all()->where("trang_thai","in",["Xác nhận","Hoàn tất"]);
         $schedule= "";
         foreach ($bookingDates as $item){
             $endDate= strtotime($item->ngay_lam.'+ '.$item->thoi_gian_lam.' minute');

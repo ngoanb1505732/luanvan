@@ -93,7 +93,7 @@ class EmployeeController extends Controller
             return redirect()->route('employee.login');
         }
 
-        $bookingDates = PhieuDatCho::all()->where("trang_thai","=","Xác nhận")
+        $bookingDates = PhieuDatCho::all()->where("trang_thai","in",["Xác nhận","Hoàn tất"])
         ->where("nhan_vien_id","=",$employeeID)
         ;
         $schedule= "";
