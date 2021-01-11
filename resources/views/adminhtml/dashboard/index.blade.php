@@ -37,28 +37,18 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="cat__core__widget p-3">
-                    <strong>Orders:</strong>
-                    <p class="text-muted">Placed order by customer</p>
+                    <strong>Tổng doanh thu: {{$totalPrice}} VND</strong>
+                    <p class="text-muted"></p>
                     <div class="progress mb-3" style="height: 7px">
                         <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 87%"></div>
                     </div>
-                    <strong>Customers:</strong>
-                    <p class="text-muted">Registered customer</p>
+                    <strong>Khách hàng mới: {{count($customers)}}</strong>
+                    <p class="text-muted"></p>
                     <div class="progress mb-3" style="height: 7px">
                         <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 20%"></div>
                     </div>
-                    <strong>Search:</strong>
-                    <p class="text-muted">Count of search queries</p>
-                    <div class="progress mb-3" style="height: 7px">
-                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 35%"></div>
-                    </div>
-                    <strong>Page Viewed:</strong>
-                    <p class="text-muted">Website viewed by visitors</p>
-                    <div class="progress mb-3" style="height: 7px">
-                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 56%"></div>
-                    </div>
-                    <strong>Products:</strong>
-                    <p class="text-muted">Total products in shopping cart</p>
+                    <strong>Dịch vụ: {{count($services)}}</strong>
+                    <p class="text-muted"></p>
                     <div class="progress mb-3" style="height: 7px">
                         <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 18%"></div>
                     </div>
@@ -77,8 +67,8 @@
                                     <div class="cat__core__widget__3__icon">
                                         <i class="icmn-accessibility"></i>
                                     </div>
-                                    <h2><i class="icmn-accessibility"></i> Sales Growth</h2>
-                                    <p>View Report</p>
+                                    <h2><i class="icmn-accessibility"></i> Bán Hàng</h2>
+                                    <p>Báo cáo</p>
                                 </a>
                             </div>
                             <div class="carousel-item">
@@ -86,8 +76,8 @@
                                     <div class="cat__core__widget__3__icon">
                                         <i class="icmn-download"></i>
                                     </div>
-                                    <h2><i class="icmn-download"></i> All Reports</h2>
-                                    <p>Download</p>
+                                    <h2><i class="icmn-download"></i>Tất Cả Báo Cáo</h2>
+                                    <p>Tải xuống</p>
                                 </a>
                             </div>
                         </div>
@@ -106,9 +96,9 @@
                                         <i class="icmn-barcode"></i>
                                     </div>
                                     <h2>
-                                        <i class="icmn-barcode"></i> Products
+                                        <i class="icmn-barcode"></i> Dịch vụ
                                     </h2>
-                                    <p>Download
+                                    <p>Tải xuống
                                     </p>
                                 </a>
                             </div>
@@ -118,9 +108,9 @@
                                         <i class="icmn-stats-dots"></i>
                                     </div>
                                     <h2>
-                                        <i class="icmn-stats-dots"></i> Orders
+                                        <i class="icmn-stats-dots"></i> Hoá đơn
                                     </h2>
-                                    <p>Download
+                                    <p>Tải xuống
                                     </p>
                                 </a>
                             </div>
@@ -141,9 +131,9 @@
                                         <i class="icmn-users"></i>
                                     </div>
                                     <h2>
-                                        <i class="icmn-users"></i> Customers
+                                        <i class="icmn-users"></i> Khách Hàng
                                     </h2>
-                                    <p>Download
+                                    <p>Tải xuống
                                     </p>
                                 </a>
                             </div>
@@ -153,9 +143,9 @@
                                         <i class="icmn-cart"></i>
                                     </div>
                                     <h2>
-                                        <i class="icmn-cart"></i> In Cart
+                                        <i class="icmn-cart"></i> Sẩn phẩm bán chạy
                                     </h2>
-                                    <p>Download
+                                    <p>Tải xuống
                                     </p>
                                 </a>
                             </div>
@@ -169,13 +159,17 @@
 <div class="row">
     <div class="col-lg-6">
         <div class="cat__core__widget">
-            <p class="pt-3 px-3"><strong>REVENUE STATISTICS</strong></p>
+            <p class="pt-3 px-3"><strong>Thống kê tháng này </strong>
+            <span class="dot-yellow "></span> Khách hàng
+                <span class="dot-blue "></span> Hoá đơn
+                <span class="dot-white-green "></span> Đặt lịch
+            </p>
             <div class="chart-line height-300 chartist"></div>
         </div>
     </div>
     <div class="col-lg-6">
         <div class="cat__core__widget">
-            <p class="pt-3 px-3"><strong>SITE VISITS GROWTH</strong></p>
+            <p class="pt-3 px-3"><strong>Thống kê năm</strong></p>
             <div class="chart-overlapping-bar height-300 chartist"></div>
         </div>
     </div>
@@ -188,8 +182,8 @@
                     <i class="icmn-database"><!-- --></i>
                 </span>
                 <div class="cat__core__step__desc">
-                    <span class="cat__core__step__title">Databases</span>
-                    <p>Total Products: 61756</p>
+                    <span class="cat__core__step__title">Dịch vụ</span>
+                    <p>Tổng : {{count($services)}}</p>
                 </div>
             </div>
         </div>
@@ -201,8 +195,8 @@
                     <i class="icmn-users"><!-- --></i>
                 </span>
                 <div class="cat__core__step__desc">
-                    <span class="cat__core__step__title">Users</span>
-                    <p>Total Users: 7658</p>
+                    <span class="cat__core__step__title">Khách hàng</span>
+                    <p>Tổng: {{count($customers)}}</p>
                 </div>
             </div>
         </div>
@@ -214,8 +208,8 @@
                     <i class="icmn-bullhorn"><!-- --></i>
                 </span>
                 <div class="cat__core__step__desc">
-                    <span class="cat__core__step__title">Connections</span>
-                    <p>Total Visitors: 5543</p>
+                    <span class="cat__core__step__title">Nhân viên</span>
+                    <p>Tổng: {{count($employees)}}</p>
                 </div>
             </div>
         </div>
@@ -227,8 +221,8 @@
                     <i class="icmn-price-tags"><!-- --></i>
                 </span>
                 <div class="cat__core__step__desc">
-                    <span class="cat__core__step__title">Sales</span>
-                    <p>Total Orders: 646</p>
+                    <span class="cat__core__step__title">Hoá đơn</span>
+                    <p>Tổng: {{count($orders)}}</p>
                 </div>
             </div>
         </div>
@@ -241,73 +235,30 @@
                 <table class="table table-hover nowrap" width="100%">
                     <thead class="thead-inverse">
                     <tr>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Registration Date</th>
-                        <th>Last Login Date</th>
+                        <th>ID</th>
+                        <th>Họ tên</th>
+                        <th>SDT</th>
+                        <th>Địa chỉ</th>
                     </tr>
                     </thead>
                     <tfoot>
                     <tr>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Date</th>
-                        <th>Salary</th>
+                        <th>ID</th>
+                        <th>Họ tên</th>
+                        <th>SDT</th>
+                        <th>Địa chỉ</th>
+
                     </tr>
                     </tfoot>
                     <tbody>
-                    <tr>
-                        <td>Damon</td>
-                        <td>5516 Adolfo Green</td>
-                        <td>Littelhaven</td>
-                        <td>85</td>
-                        <td>2014/06/13</td>
-                        <td>2016/06/13</td>
-                    </tr>
-                    <tr>
-                        <td>Torrey</td>
-                        <td>1995 Richie Neck</td>
-                        <td>West Sedrickstad</td>
-                        <td>77</td>
-                        <td>2014/09/12</td>
-                        <td>2014/11/12</td>
-                    </tr>
-                    <tr>
-                        <td>Miracle</td>
-                        <td>176 Hirthe Squares</td>
-                        <td>Ryleetown</td>
-                        <td>82</td>
-                        <td>2013/09/27</td>
-                        <td>2013/12/27</td>
-                    </tr>
-                    <tr>
-                        <td>Damon</td>
-                        <td>5516 Adolfo Green</td>
-                        <td>Littelhaven</td>
-                        <td>85</td>
-                        <td>2014/06/13</td>
-                        <td>2014/07/13</td>
-                    </tr>
-                    <tr>
-                        <td>Torrey</td>
-                        <td>1995 Richie Neck</td>
-                        <td>West Sedrickstad</td>
-                        <td>77</td>
-                        <td>2014/09/12</td>
-                        <td>2014/10/12</td>
-                    </tr>
-                    <tr>
-                        <td>Miracle</td>
-                        <td>176 Hirthe Squares</td>
-                        <td>Ryleetown</td>
-                        <td>82</td>
-                        <td>2013/09/27</td>
-                        <td>2013/11/02</td>
-                    </tr>
+                    @foreach($employees as $employee)
+                        <tr>
+                            <td>{{$employee->nhan_vien_id}}</td>
+                            <td>{{$employee->ho_ten}}</td>
+                            <td>{{$employee->sdt}}</td>
+                            <td>{{$employee->dia_chi}}</td>
+                        </tr>
+                    @endforeach
                     </tbody>
                 </table>
             </div>
@@ -326,11 +277,11 @@
         ///////////////////////////////////////////////////////////
         // chart1
         new Chartist.Line(".chart-line", {
-            labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            labels: ["T2", "T3", "T4", "T5", "T6","T7","CN"],
             series: [
-                [5, 0, 7, 8, 12],
-                [2, 1, 3.5, 7, 3],
-                [1, 3, 4, 5, 6]
+                [5, 0, 7, 8, 12,15,17],
+                [2, 1, 5, 7, 3,5,3],
+                [5, 8, 8, 5, 15,20,21]
             ]
         }, {
             fullWidth: !0,
@@ -347,7 +298,7 @@
         var overlappingData = {
                     labels: ["Jan", "Feb", "Mar", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
                     series: [
-                        [5, 4, 3, 7, 5, 10, 3, 4, 8, 10, 6, 8],
+                        [12, 4, 3, 7, 5, 10, 3, 4, 8, 10, 6, 8],
                         [3, 2, 9, 5, 4, 6, 4, 6, 7, 8, 7, 4]
                     ]
                 },
@@ -396,3 +347,28 @@
 </script>
 <!-- END: page scripts -->
 @include('components/footer')
+<style>
+    .dot-yellow {
+        height: 11px;
+        width: 11px;
+        background-color: #f2f90d;
+        border-radius: 50%;
+        display: inline-block;
+    }
+
+    .dot-blue {
+        height: 11px;
+        width: 11px;
+        background-color: #0190fe;
+        border-radius: 50%;
+        display: inline-block;
+    }
+    .dot-white-green {
+        height: 11px;
+        width: 11px;
+        background-color: #7dd3ae;
+        border-radius: 50%;
+        display: inline-block;
+    }
+
+    </style>

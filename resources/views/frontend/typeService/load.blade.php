@@ -22,43 +22,21 @@
                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 ">
                     <aside class="ps-widget--sidebar">
                         <div class="ps-widget__header">
-                            <h3>Top Liệu trình</h3>
+                            <h3>Dịch vụ khác</h3>
                         </div>
                         <div class="ps-widget__content">
+                            @foreach($services as $service )
                             <div class="ps-shoe--sidebar">
-                                <div class="ps-shoe__thumbnail"><a href="#"></a><img src="images/shoe/sidebar/1.jpg"
+                                <div class="ps-shoe__thumbnail"><a href="#"></a><img src="{{url("/")}}/{{$service->anh_dai_dien}}"
                                                                                      alt=""></div>
-                                <div class="ps-shoe__content"><a class="ps-shoe__title" href="#">Men's Sky</a>
+                                <div class="ps-shoe__content"><a class="ps-shoe__title" href="#">{{$service->ten_dich_vu}}</a>
                                     <p>
-                                        <del> £253.00</del>
-                                        £152.00
+                                {{$service->gia_tien}} VND
                                     </p>
-                                    <a class="ps-btn" href="#">PURCHASE</a>
+                                    <a class="ps-btn" href="{{route("front-end.service.load",$service->dich_vu_id)}}">Chi tiết</a>
                                 </div>
-                            </div>
-                            <div class="ps-shoe--sidebar">
-                                <div class="ps-shoe__thumbnail"><a href="#"></a><img src="images/shoe/sidebar/2.jpg"
-                                                                                     alt=""></div>
-                                <div class="ps-shoe__content"><a class="ps-shoe__title" href="#">Nike Flight
-                                        Bonafide</a>
-                                    <p>
-                                        <del> £253.00</del>
-                                        £152.00
-                                    </p>
-                                    <a class="ps-btn" href="#">PURCHASE</a>
-                                </div>
-                            </div>
-                            <div class="ps-shoe--sidebar">
-                                <div class="ps-shoe__thumbnail"><a href="#"></a><img src="images/shoe/sidebar/3.jpg"
-                                                                                     alt=""></div>
-                                <div class="ps-shoe__content"><a class="ps-shoe__title" href="#">Nike Sock Dart QS</a>
-                                    <p>
-                                        <del> £253.00</del>
-                                        £152.00
-                                    </p>
-                                    <a class="ps-btn" href="#">PURCHASE</a>
-                                </div>
-                            </div>
+                           </div>
+                            @endforeach
                         </div>
                     </aside>
                     <aside class="ps-widget--sidebar">

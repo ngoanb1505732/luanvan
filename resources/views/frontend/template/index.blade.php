@@ -85,7 +85,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-6 col-md-8 col-sm-6 col-xs-12 ">
-                    <p>Spa Duyên Cần Thơ - Hotline: 804-377-3580 </p>
+                    <p>Spa Bích Trâm - Hotline: 0933171159 </p>
                 </div>
                 <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12 ">
                     <div class="header__actions">

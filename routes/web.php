@@ -71,9 +71,8 @@ Route::group(['namespace' => 'Frontend'], function () {
 
 Route::group(['middleware' => 'auth','prefix'=>'admin','namespace' => 'Adminhtml'], function () {
 
-    Route::get('/', function () {
-        return view('/adminhtml/dashboard/index');
-    });
+    Route::get('/', 'Dashboard@index')->name("dashboard.admin");
+
 
     Route::group(['namespace' => 'Employee','prefix'=>'employee'], function()
     {
