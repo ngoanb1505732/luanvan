@@ -195,10 +195,8 @@
     scheduler.config.readonly = true;
     scheduler.init('scheduler_here',new Date(),"timeline");
     scheduler.parse([
-        {start_date:'2021-01-03 08:00:00',end_date:'2021-01-03 08:30:00',section_id:1,text:'#10',id:10
-            ,nhan_vien:'Nguyễn Thị A'
-            ,ngay_lam:'2021-01-03 08:00:00',khach_hang:'Tran Huynh Phuc',dich_vu:'Chăm sóc tóc'},
-        ],"json");
+        {!! $schedule !!}
+    ],"json");
 
     scheduler.attachEvent("onClick", function (id, e){
         var event = scheduler.getEvent(id);
